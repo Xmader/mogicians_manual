@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="icon.png">
+    <link rel="shortcut icon" href="icon.png">
+    <title>膜法指南</title>
+    <link href="bootstrap-material-design.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <style>
+        .bg-primary {
+            background-color: #2196F3 !important;
+        }
+
+        body {
+            background-size: cover;
+            font-family: "Microsoft YaHei", 微软雅黑;
+            /*background-color: #27ae60;*/
+        }
+
+        .top-nav {
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 1039;
+        }
+
+        .navbar-brand {
+            margin-left: 1rem;
+        }
+
+        .fa-graduation-cap {
+            margin-right: 2rem;
+        }
+
+        .blue {
+            color: #2196F3
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            height: 56px;
+            border-top: 1px solid rgba(0, 0, 0, 0.12);
+            background-color: white;
+            color: #747473;
+            font-size: 1.25rem;
+            /*padding-top: 0.5em;
+            padding-bottom: 0.5em;*/
+            z-index: 1039;
+        }
+
+        .bottom-nav a {
+            color: #747473;
+            font-size: 1em !important;
+            padding-top: 13px !important;
+            padding-bottom: 0.5em;
+        }
+
+        .bottom-nav a:hover {
+            color: #2196F3;
+        }
+
+        .bottom-nav a.active {
+            color: #2196F3 !important;
+        }
+
+        .list-group-item {
+            border-bottom: 1px solid rgba(0, 0, 0, .12);
+            /*padding-top: 24px;
+            padding-bottom: 24px;*/
+        }
+
+        .list-group {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        #card-deck a {
+            color: #747473;
+        }
+
+        #card-deck .grey {
+            color: #747473;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            height: 46.8px;
+        }
+
+        #card-deck a:hover {
+            color: #2196F3;
+        }
+
+        .btn-primary {
+            color: #2196F3 !important;
+        }
+
+        .navbar-close {
+            font-size: 20px;
+            margin-right: 1rem;
+            color: white;
+            display: none;
+        }
+
+        audio {
+            position: absolute;
+            right: 0px;
+        }
+
+        .audio_Firefox {
+            margin-right: 62px;
+        }
+
+        .audio {
+            margin-right: 32px;
+            margin-bottom: 8px;
+            bottom: 0px;
+        }
+
+        video {
+            margin-left: -50px;
+            width: 488px
+        }
+
+        .download_music {
+            position: absolute;
+            right: 0px;
+            margin-right: 292px;
+            font-size: 18px;
+            top: 3px;
+            background: #484848;
+            color: white;
+            height: 40px;
+            width: 30px;
+            cursor: default
+        }
+
+        .fa-download {
+            position: relative;
+            color: white;
+            top: 13px;
+        }
+
+        .fa-download:hover {
+            color: #48A0F7;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary top-nav">
+        <span class="navbar-brand">
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i> 膜法指南
+        </span>
+        <span class="navbar-close" onclick="window.close()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </span>
+    </nav>
+    <div class="container">
+        <p> &nbsp;</p>
+        <p> &nbsp;</p>
+        <!-- card-columns  class="card-deck" -->
+        <div id="card-deck">
+        </div>
+        <p> &nbsp;</p>
+    </div>
+
+
+    <ul class="nav nav-pills nav-fill bottom-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="?type=shuo" id="shuo">
+                <i class="fa fa-microphone" aria-hidden="true"></i> &nbsp;说</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?type=xue" id="xue">
+                <i class="fa fa-book" aria-hidden="true"></i> &nbsp;学</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="?type=dou" id="dou">
+                <i class="fa fa-smile-o" aria-hidden="true"></i> &nbsp;逗</a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link" href="?type=chang" id="chang">
+                <i class="fa fa-music" aria-hidden="true"></i> &nbsp;唱</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?type=videos" id="videos">
+                <i class="fa fa-film" aria-hidden="true"></i> &nbsp;赏</a>
+        </li>
+    </ul>
+    <div class="modal" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="m_title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal').modal('hide')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="m_body" style="text-indent:2em; "></p>
+                    <input style="display:none;" id="m_unformatted_body" value="" type="text">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="copy()" id="copy" data-clipboard-target="#m_unformatted_body">复制到剪贴板</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modal').modal('hide')">关闭</button>
+                </div>
+            </div>
+        </div>
+        <p> &nbsp;</p>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.0/underscore-min.js"></script>
+    <script src="index.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.6/umd/popper.js"></script>
+    <script src="bootstrap-material-design.js"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+    <script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script src="copy.js"></script>
+</body>
+
+</html>
