@@ -1,4 +1,4 @@
-const is_electron_app = navigator.userAgent.indexOf("Electron") > -1
+var is_electron_app = navigator.userAgent.indexOf("Electron") > -1
 var clipboard, dialog, path, copy
 
 if (is_electron_app) {
@@ -24,21 +24,7 @@ if (is_electron_app) {
     }
 }
 else {
-    var copy = () => {
-
-    }
-    var clipboard = new Clipboard("#copy")
-    clipboard.on('success', function (e) {
-        // console.info('Action:', e.action);
-        // console.info('Text:', e.text);
-        // console.info('Trigger:', e.trigger);
-        if (is_Firefox) { alert('复制失败!\n\n请手动进行复制!') }
-        else { alert("复制成功!\n\n我感觉你们还要削习一个") }
-        e.clearSelection();
-    });
-    clipboard.on('error', function (e) {
-        alert('复制失败!\n\n请手动进行复制!')
-    });
+    $("#copy").remove()
 }
 
 
