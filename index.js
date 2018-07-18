@@ -26,7 +26,7 @@ const init_video_img_modal = (src, title, type) => {
 
 var is_electron_app = navigator.userAgent.indexOf("Electron") > -1
 const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1;
-const is_Chrome = (navigator.userAgent.indexOf("Chrome") > -1) && window.chrome;
+const is_Chrome = (navigator.userAgent.indexOf("Chrome") > -1) && navigator.userAgent.indexOf("Safari") > -1 && !(navigator.userAgent.indexOf("Edge") > -1);
 
 var t = getArgs()["type"] || "shuo"
 
