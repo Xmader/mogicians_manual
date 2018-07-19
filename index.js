@@ -22,6 +22,8 @@ const init_video_img_modal = (src, title, type) => {
 
     $(".download_video").remove()
     $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "img" ? "图片" : "视频"}</a>`)
+
+    $(".modal-body").css("padding", "20px 0px")
 }
 
 var is_electron_app = navigator.userAgent.indexOf("Electron") > -1
