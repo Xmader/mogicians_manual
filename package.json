@@ -1,0 +1,17 @@
+{
+  "name": "mogicians_manual",
+  "description": "膜法指南 网页版",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xmader/mogicians_manual"
+  },
+  "author": "xmader",
+  "scripts": {
+    "build": "babel index.js copy.js -d lib"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "license": "MIT"
+}
