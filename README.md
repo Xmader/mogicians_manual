@@ -9,7 +9,7 @@
 
 **[进入 膜法指南 网页版](https://xmader.github.io/mogicians_manual/)**
 
-> ~~请使用现代浏览器 (Chrome、Firefox 及 Edge 等) 访问~~<br/> 现在增加了对国产浏览器和IE11的滋磁
+> 请使用现代浏览器 (Chrome、Firefox 及 Edge 等) 访问。<br/> 现在增加了对国产浏览器和IE11的滋磁, 但可能在IE浏览器中无法正常显示“**唱**”页面。
 
 ## 功能
 【说】：语录、采访、访问对话、诗词、论文等作品。

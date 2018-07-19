@@ -7,6 +7,7 @@
   },
   "author": "xmader",
   "scripts": {
+    "web-service": "python -m SimpleHTTPServer 3000",
     "build": "babel index.js copy.js -d lib"
   },
   "devDependencies": {

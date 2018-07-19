@@ -63,7 +63,7 @@ $.get("https://mohu.oss-cn-shanghai.aliyuncs.com/" + t + ".json", (data) => {
                     break;
                 }
                 case "chang": {
-                    item_html += `<li class="list-group-item grey chang ${is_Chrome || is_electron_app ? "chang_chrome" : " "}">${data[key][items[a]]}<a href="${data["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${data["url"]}${items[a]}.mp3" controls></audio></li>`
+                    item_html += `<li class="list-group-item grey chang ${is_Chrome || is_electron_app ? "chang_chrome" : " "}">${data[key][items[a]]}<br><a href="${data["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${data["url"]}${items[a]}.mp3" controls></audio></li>`
                     break;
                 }
                 case "videos": {
