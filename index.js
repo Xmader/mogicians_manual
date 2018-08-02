@@ -9,6 +9,20 @@ const getArgs = () => {
     return args;
 }
 
+// 网页内全屏视频
+const full_screen_video = () => {
+    $("#modal").after($(".modal_media"))
+    $(".modal_media").addClass("full_screen_video")
+    $(".modal_media").css('margin-left', '0');
+    $(".modal_media").after(`<button type="button" class="btn btn-primary" style="position: fixed;z-index: 9999;right: 0;top: 0;" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
+}
+const exit_full_screen_video = () => {
+    $("#exit_full_screen_video").remove()
+    $(".modal_media").removeClass("full_screen_video")
+    $(".modal_media").css('margin-left', '-27px');
+    $("#m_body").append($(".modal_media"))
+}
+
 const init_modal = (key, a) => {
     $("#m_title").text(json[key]["titles"][a])
     $("#m_body").html("<p>" + json[key]["contents"][a].replace(/\n/g, "</p><p>"))
@@ -22,6 +36,9 @@ const init_video_img_modal = (src, title, type) => {
 
     $(".download_video").remove()
     $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "img" ? "图片" : "视频"}</a>`)
+
+    $("#full_screen_video").remove()
+    if (type != "img") { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
 
     $(".modal-body").css("padding", "20px 0px")
 }
