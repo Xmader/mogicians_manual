@@ -57,7 +57,8 @@ link.addClass('active');
 
 var json
 const json_callback = (data) => {
-    json = typeof data == "string" ? JSON.parse(data) : data
+    if (typeof data == "string") { var data_split = data.split("\n"); data_split.shift(); data_split.pop(); json = JSON.parse(data_split.join("\n")) }
+    else { json = data }
 
     var keys = _.keys(json)
     var card_deck = $("#card-deck")
@@ -112,9 +113,10 @@ const json_callback = (data) => {
         }
     }
 }
-if (_offline) {
+
+if (_offline) {  // 解决Firefox中不能访问本地资源的问题
     var json_element = document.createElement("script")
-    json_element.src =  `resource/${t}.json?jsoncallback=json_callback`;
+    json_element.src = `resource/${t}.json?callback=json_callback`;
     document.getElementsByTagName("body")[0].appendChild(json_element)
 }
 else {
