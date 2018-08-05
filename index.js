@@ -56,7 +56,7 @@ var link = $("#" + t)
 link.addClass('active');
 
 var json
-const json_callback = (data) => {
+$.getJSON((_offline ? "resource/" : "https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/") + t + ".json", null, (data) => {
     json = typeof data == "string" ? JSON.parse(data) : data
 
     var keys = _.keys(json)
@@ -111,14 +111,7 @@ const json_callback = (data) => {
             $(".download_music").hide()
         }
     }
-}
-
-if (_offline) {
-    $("body").append(`<script src="resource/${t}.json?callback=json_callback"></script>`)
-}
-else {
-    $.get("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + t + ".json", json_callback)
-}
+})
 
 $('#modal').on('hidden.bs.modal', function (e) {
     $("#m_body").html(" ")
