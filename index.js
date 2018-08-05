@@ -56,7 +56,7 @@ var link = $("#" + t)
 link.addClass('active');
 
 var json
-$.get(_offline ? "resource/" : "https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + t + ".json", (data) => {
+const json_callback = (data) => {
     json = typeof data == "string" ? JSON.parse(data) : data
 
     var keys = _.keys(json)
@@ -111,11 +111,15 @@ $.get(_offline ? "resource/" : "https://raw.githubusercontent.com/Xmader/mogicia
             $(".download_music").hide()
         }
     }
-
-
-
-
-})
+}
+if (_offline) {
+    var json_element = document.createElement("script")
+    json_element.src =  `resource/${t}.json?jsoncallback=json_callback`;
+    document.getElementsByTagName("body")[0].appendChild(json_element)
+}
+else {
+    $.get("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + t + ".json", json_callback)
+}
 
 $('#modal').on('hidden.bs.modal', function (e) {
     $("#m_body").html(" ")
