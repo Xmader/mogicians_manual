@@ -1,3 +1,4 @@
+json_callback(
 {   
     "url":"https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/chang/",
     "古典": {
@@ -38,3 +39,4 @@
         "chang_anime_7_bai_jin_ha_du": "白金蛤督"
     }
 }
+)

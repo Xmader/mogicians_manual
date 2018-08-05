@@ -1,3 +1,4 @@
+json_callback(
 {
     "url": "https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/dou/",
     "高清": {
@@ -124,3 +125,4 @@
         "dou_baozou_9_bu_yao_mo_ha.jpg": "不要膜蛤"
     }
 }
+)
