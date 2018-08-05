@@ -58,10 +58,12 @@ link.addClass('active');
 var json
 $.get(_offline ? "resource/" : "https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + t + ".json", (data) => {
     json = typeof data == "string" ? JSON.parse(data) : data
+
     var keys = _.keys(json)
     var card_deck = $("#card-deck")
     if (t == "dou" || t == "chang" || t == "videos") {
         keys.shift()
+        if (_offline) { json["url"] = json["url"].replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
     }
 
     for (var i = 0; i < keys.length; i++) {
