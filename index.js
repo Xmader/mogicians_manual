@@ -38,7 +38,7 @@ const init_video_img_modal = (src, title, type) => {
     $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "img" ? "图片" : "视频"}</a>`)
 
     $("#full_screen_video").remove()
-    if (type != "img") { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
+    if (type != "img" && (typeof _cordova == "undefined")) { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
 
     $(".modal-body").css("padding", "20px 0px")
 }
