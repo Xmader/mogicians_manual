@@ -2,10 +2,10 @@ json_callback(
 {
     "url": "https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/",
     "蛤三篇总集": {
-        "蛤三篇总集/怒斥1080p.mp4": "怒斥1080p",
-        "蛤三篇总集/老爷爷与年轻人.mp4": "怒斥",
-        "蛤三篇总集/蛤三篇之视察二院.mp4": "蛤三篇之视察二院",
-        "蛤三篇总集/谈笑风生中文字幕 - 20分钟精华版.mp4": "谈笑风生中文字幕 - 20分钟精华版"
+        "ha_san_pian_zong_ji/nu_chi_1080p.mp4": "怒斥1080p",
+        "ha_san_pian_zong_ji/nu_chi.mp4": "怒斥",
+        "ha_san_pian_zong_ji/shi_cha_er_yuan.mp4": "蛤三篇之视察二院",
+        "ha_san_pian_zong_ji/tan_xiao_feng_sheng.mp4": "谈笑风生中文字幕 - 20分钟精华版"
     },
     "膜学选修教材": {
         "膜学选修教材/1990年春晚.mp4": "1990年春晚",
@@ -41,7 +41,7 @@ json_callback(
         "膜学选修教材/史上最强毕业歌.mp4":"史上最强毕业歌阵容"
     },
     "其虵":{
-        "千本蛤.mp4":"千本蛤"
+        "qian_ben_ha.mp4":"千本蛤"
     }
 }
 )
