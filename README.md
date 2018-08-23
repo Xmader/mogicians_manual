@@ -22,6 +22,12 @@
 
 【赏】：蛤三篇总集、膜学选修教材 等视频。
 
+## 离线使用
+
+* 在Android手机上请[下载AndroidAPP](https://mohu.oss-cn-shanghai.aliyuncs.com/mogicians_manual-Android.apk)
+
+* 在电脑上请使用`git clone`或[下载](https://github.com/Xmader/mogicians_manual/archive/offline.zip)`offline`分支, 双击`index.html`在浏览器中打开
+
 ## 截屏
 ![说](说.PNG)
 ![学](学.PNG)
