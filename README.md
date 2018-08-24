@@ -24,10 +24,11 @@
 
 ## 离线使用
 
-* 在Android手机上请[下载AndroidAPP](https://github.com/Xmader/mogicians_manual/releases/download/v2018.08.23/mogicians_manual-Android.apk)
-<!-- https://github.com/Xmader/mogicians_manual/releases/latest -->
+* [下载Android应用程序](https://github.com/Xmader/mogicians_manual/releases/latest)
 
-* 在电脑上请使用`git clone`或[下载](https://github.com/Xmader/mogicians_manual/archive/offline.zip)`offline`分支, 双击`index.html`在浏览器中打开
+或
+
+* 使用`git clone`或[下载](https://github.com/Xmader/mogicians_manual/archive/offline.zip)`offline`分支, 双击`index.html`在浏览器中打开
 
 ## 截屏
 ![说](说.PNG)
