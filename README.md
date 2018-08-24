@@ -9,6 +9,8 @@
 
 **[进入 膜法指南 网页版](https://xmader.github.io/mogicians_manual/)**
 
+[下载Android应用程序（在线使用）](https://github.com/Xmader/mogicians_manual/releases/)
+
 > 请使用现代浏览器 (Chrome、Firefox 及 Edge 等) 访问。<br/> 现在增加了对国产浏览器和IE11的滋磁, 但可能在IE浏览器中无法正常显示“**唱**”页面。
 
 ## 功能
@@ -24,7 +26,7 @@
 
 ## 离线使用
 
-* [下载Android应用程序](https://github.com/Xmader/mogicians_manual/releases/latest)
+* [下载Android应用程序（可离线使用）](https://github.com/Xmader/mogicians_manual/releases/)
 
 或
 
