@@ -9,6 +9,8 @@
 
 **[进入 膜法指南 网页版](https://xmader.github.io/mogicians_manual/)**
 
+[下载Android应用程序（在线使用）](https://github.com/Xmader/mogicians_manual/releases/)
+
 > 请使用现代浏览器 (Chrome、Firefox 及 Edge 等) 访问。<br/> 现在增加了对国产浏览器和IE11的滋磁, 但可能在IE浏览器中无法正常显示“**唱**”页面。
 
 ## 功能
@@ -21,6 +23,14 @@
 【唱】：古典、流行、动画等音乐。
 
 【赏】：蛤三篇总集、膜学选修教材 等视频。
+
+## 离线使用
+
+* [下载Android应用程序（可离线使用）](https://github.com/Xmader/mogicians_manual/releases/)
+
+或
+
+* 使用`git clone`或[下载](https://github.com/Xmader/mogicians_manual/archive/offline.zip)`offline`分支, 双击`index.html`在浏览器中打开
 
 ## 截屏
 ![说](说.PNG)
