@@ -105,8 +105,7 @@ const json_callback = (data) => {
         <ul class="list-group list-group-flush">
             ${item_html}
         </ul>
-    </div>
-    <p> &nbsp;</p>`;
+    </div>`;
         card_deck.append(html);
     }
 
