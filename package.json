@@ -8,7 +8,7 @@
   "author": "xmader",
   "scripts": {
     "web-service": "python -m SimpleHTTPServer 3000",
-    "build": "babel index.js copy.js -d lib"
+    "build": "babel index.js -d lib"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

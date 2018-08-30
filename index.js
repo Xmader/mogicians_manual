@@ -13,13 +13,11 @@ const getArgs = () => {
 const full_screen_video = () => {
     $("#modal").after($(".modal_media"))
     $(".modal_media").addClass("full_screen_video")
-    $(".modal_media").css('margin-left', '0');
-    $(".modal_media").after(`<button type="button" class="btn btn-primary" style="position: fixed;z-index: 9999;right: 0;top: 0;" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
+                     .after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
 }
 const exit_full_screen_video = () => {
     $("#exit_full_screen_video").remove()
     $(".modal_media").removeClass("full_screen_video")
-    $(".modal_media").css('margin-left', '-27px');
     $("#m_body").append($(".modal_media"))
 }
 
@@ -32,7 +30,6 @@ const init_modal = (key, a) => {
 const init_video_img_modal = (src, title, type) => {
     $("#m_title").text(title)
     $("#m_body").html(type == "img" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
-    $("#copy").hide()
 
     $(".download_video").remove()
     $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "img" ? "图片" : "视频"}</a>`)
@@ -46,10 +43,7 @@ const init_video_img_modal = (src, title, type) => {
 var _offline = !(typeof _offline == "undefined")
 if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
 
-var is_electron_app = navigator.userAgent.indexOf("Electron") > -1
 const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1;
-const is_Android = navigator.userAgent.indexOf("Android") > -1;
-const is_Chrome = (navigator.userAgent.indexOf("Chrome") > -1) && navigator.userAgent.indexOf("Safari") > -1 && !(navigator.userAgent.indexOf("Edge") > -1) && is_Android;
 
 var t = getArgs()["type"] || "shuo"
 
@@ -87,7 +81,7 @@ const json_callback = (data) => {
                     break;
                 }
                 case "chang": {
-                    item_html += `<li class="list-group-item grey chang ${is_Android ? "chang_Android" : (is_Chrome || is_electron_app ? "chang_chrome" : " ")}">${json[key][items[a]]}<br><a href="${json["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}.mp3" controls></audio></li>`
+                    item_html += `<li class="list-group-item grey chang"><span class="audio_title">${json[key][items[a]]}</span><a href="${json["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}.mp3" controls></audio></li>`
                     break;
                 }
                 case "videos": {
@@ -106,9 +100,12 @@ const json_callback = (data) => {
         <ul class="list-group list-group-flush">
             ${item_html}
         </ul>
-    </div>
-    <p> &nbsp;</p>`;
+    </div>`;
         card_deck.append(html);
+    }
+
+    if (t == "chang") {
+        $(".list-group-item.chang").css("padding-bottom", $("audio").height() + 23 + "px")
         if (!is_Firefox) {
             $(".download_music").hide()
         }
