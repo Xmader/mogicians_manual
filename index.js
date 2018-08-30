@@ -13,13 +13,11 @@ const getArgs = () => {
 const full_screen_video = () => {
     $("#modal").after($(".modal_media"))
     $(".modal_media").addClass("full_screen_video")
-    $(".modal_media").css('margin-left', '0');
-    $(".modal_media").after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
+                     .after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
 }
 const exit_full_screen_video = () => {
     $("#exit_full_screen_video").remove()
     $(".modal_media").removeClass("full_screen_video")
-    $(".modal_media").css('margin-left', '-27px');
     $("#m_body").append($(".modal_media"))
 }
 
