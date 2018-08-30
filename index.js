@@ -48,8 +48,7 @@ if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
 
 var is_electron_app = navigator.userAgent.indexOf("Electron") > -1
 const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1;
-const is_Android = navigator.userAgent.indexOf("Android") > -1;
-const is_Chrome = (navigator.userAgent.indexOf("Chrome") > -1) && navigator.userAgent.indexOf("Safari") > -1 && !(navigator.userAgent.indexOf("Edge") > -1) && is_Android;
+const is_Chrome = (navigator.userAgent.indexOf("Chrome") > -1) && navigator.userAgent.indexOf("Safari") > -1 && !(navigator.userAgent.indexOf("Edge") > -1)
 
 var t = getArgs()["type"] || "shuo"
 
@@ -87,7 +86,7 @@ const json_callback = (data) => {
                     break;
                 }
                 case "chang": {
-                    item_html += `<li class="list-group-item grey chang ${is_Android ? "chang_Android" : (is_Chrome || is_electron_app ? "chang_chrome" : " ")}">${json[key][items[a]]}<br><a href="${json["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}.mp3" controls></audio></li>`
+                    item_html += `<li class="list-group-item grey chang">${json[key][items[a]]}<br><a href="${json["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}.mp3" controls></audio></li>`
                     break;
                 }
                 case "videos": {
@@ -109,6 +108,10 @@ const json_callback = (data) => {
     </div>
     <p> &nbsp;</p>`;
         card_deck.append(html);
+    }
+
+    if (t == "chang") {
+        $(".list-group-item.chang").css("padding-bottom", $("audio").height() + 23 + "px")
         if (!is_Firefox) {
             $(".download_music").hide()
         }
