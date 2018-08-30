@@ -86,7 +86,7 @@ const json_callback = (data) => {
                     break;
                 }
                 case "chang": {
-                    item_html += `<li class="list-group-item grey chang"><span style="margin-right: 300px;white-space: nowrap;">${json[key][items[a]]}</span><a href="${json["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}.mp3" controls></audio></li>`
+                    item_html += `<li class="list-group-item grey chang"><span class="audio_title">${json[key][items[a]]}</span><a href="${json["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}.mp3" controls></audio></li>`
                     break;
                 }
                 case "videos": {
