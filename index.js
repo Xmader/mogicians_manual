@@ -32,7 +32,6 @@ const init_modal = (key, a) => {
 const init_video_img_modal = (src, title, type) => {
     $("#m_title").text(title)
     $("#m_body").html(type == "img" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
-    $("#copy").hide()
 
     $(".download_video").remove()
     $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "img" ? "图片" : "视频"}</a>`)
@@ -46,9 +45,7 @@ const init_video_img_modal = (src, title, type) => {
 var _offline = !(typeof _offline == "undefined")
 if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
 
-var is_electron_app = navigator.userAgent.indexOf("Electron") > -1
 const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1;
-const is_Chrome = (navigator.userAgent.indexOf("Chrome") > -1) && navigator.userAgent.indexOf("Safari") > -1 && !(navigator.userAgent.indexOf("Edge") > -1)
 
 var t = getArgs()["type"] || "shuo"
 
