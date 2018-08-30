@@ -14,7 +14,7 @@ const full_screen_video = () => {
     $("#modal").after($(".modal_media"))
     $(".modal_media").addClass("full_screen_video")
     $(".modal_media").css('margin-left', '0');
-    $(".modal_media").after(`<button type="button" class="btn btn-primary" style="position: fixed;z-index: 9999;right: 0;top: 0;" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
+    $(".modal_media").after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
 }
 const exit_full_screen_video = () => {
     $("#exit_full_screen_video").remove()
