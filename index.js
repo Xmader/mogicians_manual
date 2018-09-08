@@ -27,20 +27,25 @@ const exit_full_screen_video = () => { // 退出网页内全屏视频
     $("#m_body").append($(".modal_media"))
 }
 
-const init_modal = (title, content) => { // 初始化文字对话框 (type==0)
-    $("#m_title").text(title)
-    $("#m_body").html("<p>" + content.replace(/\n/g, "</p><p>"))
+const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
+    var item = json.contents[i].contents[a]
+    $("#m_title").text(item.title)
+    $("#m_body").html("<p>" + item.content.replace(/\n/g, "</p><p>"))
+
+    $(".download_video").remove()
+    $("#full_screen_video").remove()
+    $(".modal-body").css("padding", "20px 24px 0px")
 }
 
 const init_video_img_modal = (src, title, type) => {
     $("#m_title").text(title)
-    $("#m_body").html(type == "img" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
+    $("#m_body").html(type == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
 
     $(".download_video").remove()
-    $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "img" ? "图片" : "视频"}</a>`)
+    $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "dou" ? "图片" : "视频"}</a>`)
 
     $("#full_screen_video").remove()
-    if (type != "img" && (typeof _cordova == "undefined")) { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
+    if (type != "dou" && (typeof _cordova == "undefined")) { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
 
     $(".modal-body").css("padding", "20px 0px")
 }
@@ -73,14 +78,6 @@ const json_callback = (data) => { // 解析资源文件，显示内容
             var title = item["title"]
 
             switch (t) {
-                case "dou": {
-                    item_html += `<li class="list-group-item grey">
-                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${url}${item["filename"]}','${title}','img');">
-                            ${title}
-                        </a>
-                    </li>`
-                    break;
-                }
                 case "chang": {
                     item_html += `<li class="list-group-item grey chang">
                         <span class="audio_title">${title}</span>
@@ -91,17 +88,10 @@ const json_callback = (data) => { // 解析资源文件，显示内容
                     </li>`
                     break;
                 }
-                case "videos": {
-                    item_html += `<li class="list-group-item grey">
-                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${url}${item["filename"]}','${title}');">
-                            ${title}
-                        </a>
-                    </li>`
-                    break;
-                }
                 default: {
+                    var onclick = (t == "dou" || t == "videos") ? `init_video_img_modal('${url}${item["filename"]}','${title}','${t}');` : `init_modal('${i}','${a}');`
                     item_html += `<li class="list-group-item">
-                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_modal('${title}','${item["content"]}');">
+                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="${onclick}">
                             ${title}
                         </a>
                     </li>`
