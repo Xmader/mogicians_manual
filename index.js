@@ -14,23 +14,22 @@ const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1
 
 var json, t
 
-// 网页内全屏视频
-const full_screen_video = () => {
+const full_screen_video = () => { // 网页内全屏视频
     $("#modal").after($(".modal_media"))
     $(".modal_media")
         .addClass("full_screen_video")
         .after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
 }
-const exit_full_screen_video = () => {
+
+const exit_full_screen_video = () => { // 退出网页内全屏视频
     $("#exit_full_screen_video").remove()
     $(".modal_media").removeClass("full_screen_video")
     $("#m_body").append($(".modal_media"))
 }
 
-const init_modal = (key, a) => {
-    $("#m_title").text(json[key]["titles"][a])
-    $("#m_body").html("<p>" + json[key]["contents"][a].replace(/\n/g, "</p><p>"))
-    $("#m_unformatted_body")[0].value = json[key]["contents"][a]
+const init_modal = (title, content) => { // 初始化文字对话框 (type==0)
+    $("#m_title").text(title)
+    $("#m_body").html("<p>" + content.replace(/\n/g, "</p><p>"))
 }
 
 const init_video_img_modal = (src, title, type) => {
@@ -47,53 +46,78 @@ const init_video_img_modal = (src, title, type) => {
 }
 
 const json_callback = (data) => { // 解析资源文件，显示内容
-    if (typeof data == "string") { var data_split = data.split("\n"); data_split.shift(); data_split.pop(); json = JSON.parse(data_split.join("\n")) }
+
+    // 解析资源文件为json
+    if (typeof data == "string") {
+        var data_split = data.split("\n");
+        data_split.shift();
+        data_split.pop();
+        json = JSON.parse(data_split.join("\n"))
+    }
     else { json = data }
 
-    if (json["type"] == 1 && _offline) { json["url"] = json["url"].replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
+    // 获取媒体文件的url地址前缀
+    if (json["type"] == 1) {
+        var url = json["url"]
+        if (_offline) { url = url.replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
+    }
 
-    var contents = json["contents"]
-    for (var i = 0; i < contents.length; i++) {
-        var key = keys[i]
-
-        if (t == "dou" || t == "chang" || t == "videos") {
-            var items = _.keys(json[key])
-        } else {
-            var items = json[key]["titles"]
-        }
+    for (var i = 0; i < json.contents.length; i++) {
+        var jc = json.contents[i]
+        var items = jc["contents"]
 
         var item_html = ""
 
-
         for (var a = 0; a < items.length; a++) {
+            var item = items[a]
+            var title = item["title"]
+
             switch (t) {
                 case "dou": {
-                    item_html += `<li class="list-group-item grey"><a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${json["url"]}${items[a]}','${json[key][items[a]]}','img');">${json[key][items[a]]}</a></li>`
+                    item_html += `<li class="list-group-item grey">
+                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${url}${item["filename"]}','${title}','img');">
+                            ${title}
+                        </a>
+                    </li>`
                     break;
                 }
                 case "chang": {
-                    item_html += `<li class="list-group-item grey chang"><span class="audio_title">${json[key][items[a]]}</span><a href="${json["url"]}${items[a]}" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}" controls></audio></li>`
+                    item_html += `<li class="list-group-item grey chang">
+                        <span class="audio_title">${title}</span>
+                        <a href="${url}${item["filename"]}" target="_blank" class="download_music" download>
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </a>
+                        <audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${url}${item["filename"]}" controls></audio>
+                    </li>`
                     break;
                 }
                 case "videos": {
-                    item_html += `<li class="list-group-item grey"><a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${json["url"]}${items[a]}','${json[key][items[a]]}');">${json[key][items[a]]}</a></li>`
+                    item_html += `<li class="list-group-item grey">
+                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${url}${item["filename"]}','${title}');">
+                            ${title}
+                        </a>
+                    </li>`
                     break;
                 }
                 default: {
-                    item_html += `<li class="list-group-item"><a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_modal('${key}',${a});">${items[a]}</a></li>`
+                    item_html += `<li class="list-group-item">
+                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_modal('${title}','${item["content"]}');">
+                            ${title}
+                        </a>
+                    </li>`
                 }
             }
         }
 
         var html = `
     <div class="card">
-        <h5 class="card-header">${key}</h5>
+        <h5 class="card-header">${jc["title"]}</h5>
         <ul class="list-group list-group-flush">
             ${item_html}
         </ul>
     </div>`;
-        var card_deck = $("#card-deck")
-        card_deck.append(html);
+
+        $("#card-deck").append(html);
     }
 
     if (t == "chang") {
@@ -111,6 +135,9 @@ const init = () => { // 初始化页面
     // 底部导航条高亮当前子页面
     $(".nav-link").removeClass('active')
     $("#" + t).addClass('active')
+
+    // 清空内容
+    $("#card-deck").html("")
 
     // 获取资源文件
     if (_offline) {
