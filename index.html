@@ -30,23 +30,23 @@
 
     <ul class="nav nav-pills nav-fill bottom-nav">
         <li class="nav-item">
-            <a class="nav-link" href="?type=shuo" id="shuo">
+            <a class="nav-link" href="#/shuo" id="shuo">
                 <i class="fa fa-microphone" aria-hidden="true"></i> &nbsp;说</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="?type=xue" id="xue">
+            <a class="nav-link" href="#/xue" id="xue">
                 <i class="fa fa-book" aria-hidden="true"></i> &nbsp;学</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="?type=dou" id="dou">
+            <a class="nav-link" href="#/dou" id="dou">
                 <i class="fa fa-smile-o" aria-hidden="true"></i> &nbsp;逗</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="?type=chang" id="chang">
+            <a class="nav-link" href="#/chang" id="chang">
                 <i class="fa fa-music" aria-hidden="true"></i> &nbsp;唱</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="?type=videos" id="videos">
+            <a class="nav-link" href="#/videos" id="videos">
                 <i class="fa fa-film" aria-hidden="true"></i> &nbsp;赏</a>
         </li>
     </ul>
@@ -61,7 +61,6 @@
                 </div>
                 <div class="modal-body">
                     <p id="m_body"></p>
-                    <input id="m_unformatted_body" value="" type="text">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modal').modal('hide')">关闭</button>
@@ -76,8 +75,7 @@
     <script src="lib/index.js"></script>
     <script src="src/popper.js"></script>
     <script src="src/bootstrap-material-design.js"></script>
-    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
-    <!-- <script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js"></script> -->
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });init();</script>
 </body>
 
 </html>
