@@ -1,14 +1,18 @@
-// 获取URL中的查询字符串的某个搜索参数的值, 在现代浏览器上可用(new URLSearchParams(location.search))代替
-const getArgs = () => { 
-    var args = {};
-    var match = null;
-    var search = decodeURIComponent(location.search.substring(1));
-    var reg = /(?:([^&]+)=([^&]+))/g;
-    while ((match = reg.exec(search)) !== null) {
-        args[match[1]] = match[2];
-    }
-    return args;
-}
+/*!
+ * 膜法指南 网页版
+ * https://xmader.github.io/mogicians_manual/
+ * 
+ * Copyright (c) 2018 Xmader
+ * Released under the MIT license
+ * 
+*/
+
+var _offline = !(typeof _offline == "undefined")
+if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
+
+const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1
+
+var json, t
 
 // 网页内全屏视频
 const full_screen_video = () => {
@@ -42,23 +46,14 @@ const init_video_img_modal = (src, title, type) => {
     $(".modal-body").css("padding", "20px 0px")
 }
 
-var _offline = !(typeof _offline == "undefined")
-if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
-
-const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1;
-
-var t = (new URLSearchParams(location.search)).get("type") || "shuo"
-
-$("#" + t).addClass('active');
-
-var json
-const json_callback = (data) => {
+const json_callback = (data) => { // 解析资源文件，显示内容
     if (typeof data == "string") { var data_split = data.split("\n"); data_split.shift(); data_split.pop(); json = JSON.parse(data_split.join("\n")) }
     else { json = data }
 
     if (json["type"] == 1 && _offline) { json["url"] = json["url"].replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
 
-    for (var i = 0; i < keys.length; i++) {
+    var contents = json["contents"]
+    for (var i = 0; i < contents.length; i++) {
         var key = keys[i]
 
         if (t == "dou" || t == "chang" || t == "videos") {
@@ -109,15 +104,26 @@ const json_callback = (data) => {
     }
 }
 
-if (_offline) {  // 解决Firefox中不能访问本地资源的问题
-    var json_element = document.createElement("script")
-    json_element.src = `resource/${t}.json?callback=json_callback`;
-    document.getElementsByTagName("body")[0].appendChild(json_element)
-}
-else {
-    $.get("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + t + ".json", json_callback)
+const init = () => { // 初始化页面
+    // 获取当前的子页面名
+    t = location.hash.slice(2) || "shuo"
+
+    // 底部导航条高亮当前子页面
+    $(".nav-link").removeClass('active')
+    $("#" + t).addClass('active')
+
+    // 获取资源文件
+    if (_offline) {
+        // 强行解决Firefox中不能访问本地资源的问题
+        var json_element = document.createElement("script")
+        json_element.src = `resource/${t}.json?callback=json_callback`
+        document.getElementsByTagName("body")[0].appendChild(json_element)
+    }
+    else { $.get("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + t + ".json", json_callback) }
 }
 
-$('#modal').on('hidden.bs.modal', function (e) {
-    $("#m_body").html(" ")
-})
+// 实现关闭对话框自动结束播放视频
+$('#modal').on('hidden.bs.modal', (e) => $("#m_body").html(" "))
+
+// hash改变时自动重新初始化页面
+window.onhashchange = () => init()
