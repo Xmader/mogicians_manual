@@ -39,7 +39,7 @@ const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
 
 const init_video_img_modal = (src, title, type) => {
     $("#m_title").text(title)
-    $("#m_body").html(type == "img" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
+    $("#m_body").html(type == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
 
     $(".download_video").remove()
     $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "img" ? "图片" : "视频"}</a>`)
@@ -78,9 +78,10 @@ const json_callback = (data) => { // 解析资源文件，显示内容
             var title = item["title"]
 
             switch (t) {
-                case "dou": {
+                case "dou":
+                case "videos": {
                     item_html += `<li class="list-group-item grey">
-                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${url}${item["filename"]}','${title}','img');">
+                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${url}${item["filename"]}','${title}','${t}');">
                             ${title}
                         </a>
                     </li>`
@@ -93,14 +94,6 @@ const json_callback = (data) => { // 解析资源文件，显示内容
                             <i class="fa fa-download" aria-hidden="true"></i>
                         </a>
                         <audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${url}${item["filename"]}" controls></audio>
-                    </li>`
-                    break;
-                }
-                case "videos": {
-                    item_html += `<li class="list-group-item grey">
-                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_video_img_modal('${url}${item["filename"]}','${title}');">
-                            ${title}
-                        </a>
                     </li>`
                     break;
                 }
