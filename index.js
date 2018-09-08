@@ -27,9 +27,14 @@ const exit_full_screen_video = () => { // 退出网页内全屏视频
     $("#m_body").append($(".modal_media"))
 }
 
-const init_modal = (title, content) => { // 初始化文字对话框 (type==0)
-    $("#m_title").text(title)
-    $("#m_body").html("<p>" + content.replace(/\n/g, "</p><p>"))
+const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
+    var item = json.contents[i].contents[a]
+    $("#m_title").text(item.title)
+    $("#m_body").html("<p>" + item.content.replace(/\n/g, "</p><p>"))
+
+    $(".download_video").remove()
+    $("#full_screen_video").remove()
+    $(".modal-body").css("padding", "20px 24px 0px")
 }
 
 const init_video_img_modal = (src, title, type) => {
@@ -101,7 +106,7 @@ const json_callback = (data) => { // 解析资源文件，显示内容
                 }
                 default: {
                     item_html += `<li class="list-group-item">
-                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_modal('${title}','${item["content"]}');">
+                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="init_modal('${i}','${a}');">
                             ${title}
                         </a>
                     </li>`
