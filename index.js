@@ -1,4 +1,5 @@
-const getArgs = () => {
+// 获取URL中的查询字符串的某个搜索参数的值, 在现代浏览器上可用(new URLSearchParams(location.search))代替
+const getArgs = () => { 
     var args = {};
     var match = null;
     var search = decodeURIComponent(location.search.substring(1));
@@ -46,22 +47,16 @@ if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
 
 const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1;
 
-var t = getArgs()["type"] || "shuo"
+var t = (new URLSearchParams(location.search)).get("type") || "shuo"
 
-var link = $("#" + t)
-link.addClass('active');
+$("#" + t).addClass('active');
 
 var json
 const json_callback = (data) => {
     if (typeof data == "string") { var data_split = data.split("\n"); data_split.shift(); data_split.pop(); json = JSON.parse(data_split.join("\n")) }
     else { json = data }
 
-    var keys = _.keys(json)
-    var card_deck = $("#card-deck")
-    if (t == "dou" || t == "chang" || t == "videos") {
-        keys.shift()
-        if (_offline) { json["url"] = json["url"].replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
-    }
+    if (json["type"] == 1 && _offline) { json["url"] = json["url"].replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
 
     for (var i = 0; i < keys.length; i++) {
         var key = keys[i]
@@ -102,6 +97,7 @@ const json_callback = (data) => {
             ${item_html}
         </ul>
     </div>`;
+        var card_deck = $("#card-deck")
         card_deck.append(html);
     }
 
