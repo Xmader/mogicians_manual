@@ -1,42 +1,144 @@
 json_callback(
-{   
-    "url":"https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/chang/",
-    "古典": {
-        "chang_classic_0_ha_guo_di_yu.mp3": "蛤国地狱",
-        "chang_classic_1_chong_qing_shang_hai_kuang_xiang_qu.mp3": "重庆上海狂想曲",
-        "chang_classic_2_zi_ha_da_lu.mp3": "自蛤大陆",
-        "chang_classic_3_jingle_hath.mp3": "Jingle Hath",
-        "chang_classic_4_hahadio.mp3": "HAHAdio"
-    },
-    "流行": {
-        "chang_pop_0_sometimes_naive.mp3": "Sometimes Naïve",
-        "chang_pop_10_ha_wang_zhi_wang.mp3": "蛤王之王",
-        "chang_pop_1_too_simple.mp3": "Too Simple",
-        "chang_pop_2_du_ping_guo.mp3": "督苹果",
-        "chang_pop_3_jiang_ha_style.mp3": "江蛤Style",
-        "chang_pop_4_hanity.mp3": "蛤nity",
-        "chang_pop_5_gentle_ha_1.mp3": "Gentle蛤 · 其一",
-        "chang_pop_6_gentle_ha_2.mp3": "Gentle蛤 · 其二",
-        "chang_pop_7_ha_ping_guo.mp3": "蛤苹果",
-        "chang_pop_8_mo_ha_zhi_lu.mp3": "膜蛤之路",
-        "chang_pop_9_hhah.mp3": "HHAH"
-    },
-    "鬼畜": {
-        "chang_kitiku_0_ha_ha_zone.mp3": "蛤蛤 Zone",
-        "chang_kitiku_1_zhang_zhe_de_xiao_shi.mp3": "长者的消失",
-        "chang_kitiku_2_ha_fan_she_1.mp3": "蛤反射 · 其一",
-        "chang_kitiku_3_ha_fan_she_2.mp3": "蛤反射 · 其二"
-    },
-    "动画": {
-        "chang_anime_0_ha_ha_su_miao.mp3": "蛤蛤素描",
-        "chang_anime_1_chong_qing_re.mp3": "重庆热",
-        "chang_anime_2_brave_ha_te.mp3": "Brave 蛤t",
-        "chang_anime_3_da_tou_du_du_xiao_tou_ha_ha.mp3": "大头都督小头蛤蛤",
-        "chang_anime_4_can_ku_ha_ha_de_xing_dong_gang_ling.mp3": "残酷蛤蛤的行动纲领",
-        "chang_anime_5_wei_feng_ha_ha.mp3": "威风蛤蛤",
-        "chang_anime_6_qian_ben_ha.mp3": "千本蛤 · 其一",
-        "chang_anime_8_qian_ben_ha_2.mp3": "千本蛤 · 其二",
-        "chang_anime_7_bai_jin_ha_du.mp3": "白金蛤督"
-    }
+{
+    "type": 1,
+    "url": "https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/chang/",
+    "contents": [
+        {
+            "title": "古典",
+            "contents": [
+                {
+                    "title": "蛤国地狱",
+                    "filename": "chang_classic_0_ha_guo_di_yu.mp3"
+                },
+                {
+                    "title": "重庆上海狂想曲",
+                    "filename": "chang_classic_1_chong_qing_shang_hai_kuang_xiang_qu.mp3"
+                },
+                {
+                    "title": "自蛤大陆",
+                    "filename": "chang_classic_2_zi_ha_da_lu.mp3"
+                },
+                {
+                    "title": "Jingle Hath",
+                    "filename": "chang_classic_3_jingle_hath.mp3"
+                },
+                {
+                    "title": "HAHAdio",
+                    "filename": "chang_classic_4_hahadio.mp3"
+                }
+            ]
+        },
+        {
+            "title": "流行",
+            "contents": [
+                {
+                    "title": "Sometimes Naïve",
+                    "filename": "chang_pop_0_sometimes_naive.mp3"
+                },
+                {
+                    "title": "蛤王之王",
+                    "filename": "chang_pop_10_ha_wang_zhi_wang.mp3"
+                },
+                {
+                    "title": "Too Simple",
+                    "filename": "chang_pop_1_too_simple.mp3"
+                },
+                {
+                    "title": "督苹果",
+                    "filename": "chang_pop_2_du_ping_guo.mp3"
+                },
+                {
+                    "title": "江蛤Style",
+                    "filename": "chang_pop_3_jiang_ha_style.mp3"
+                },
+                {
+                    "title": "蛤nity",
+                    "filename": "chang_pop_4_hanity.mp3"
+                },
+                {
+                    "title": "Gentle蛤 · 其一",
+                    "filename": "chang_pop_5_gentle_ha_1.mp3"
+                },
+                {
+                    "title": "Gentle蛤 · 其二",
+                    "filename": "chang_pop_6_gentle_ha_2.mp3"
+                },
+                {
+                    "title": "蛤苹果",
+                    "filename": "chang_pop_7_ha_ping_guo.mp3"
+                },
+                {
+                    "title": "膜蛤之路",
+                    "filename": "chang_pop_8_mo_ha_zhi_lu.mp3"
+                },
+                {
+                    "title": "HHAH",
+                    "filename": "chang_pop_9_hhah.mp3"
+                }
+            ]
+        },
+        {
+            "title": "鬼畜",
+            "contents": [
+                {
+                    "title": "蛤蛤 Zone",
+                    "filename": "chang_kitiku_0_ha_ha_zone.mp3"
+                },
+                {
+                    "title": "长者的消失",
+                    "filename": "chang_kitiku_1_zhang_zhe_de_xiao_shi.mp3"
+                },
+                {
+                    "title": "蛤反射 · 其一",
+                    "filename": "chang_kitiku_2_ha_fan_she_1.mp3"
+                },
+                {
+                    "title": "蛤反射 · 其二",
+                    "filename": "chang_kitiku_3_ha_fan_she_2.mp3"
+                }
+            ]
+        },
+        {
+            "title": "动画",
+            "contents": [
+                {
+                    "title": "蛤蛤素描",
+                    "filename": "chang_anime_0_ha_ha_su_miao.mp3"
+                },
+                {
+                    "title": "重庆热",
+                    "filename": "chang_anime_1_chong_qing_re.mp3"
+                },
+                {
+                    "title": "Brave 蛤t",
+                    "filename": "chang_anime_2_brave_ha_te.mp3"
+                },
+                {
+                    "title": "大头都督小头蛤蛤",
+                    "filename": "chang_anime_3_da_tou_du_du_xiao_tou_ha_ha.mp3"
+                },
+                {
+                    "title": "残酷蛤蛤的行动纲领",
+                    "filename": "chang_anime_4_can_ku_ha_ha_de_xing_dong_gang_ling.mp3"
+                },
+                {
+                    "title": "威风蛤蛤",
+                    "filename": "chang_anime_5_wei_feng_ha_ha.mp3"
+                },
+                {
+                    "title": "千本蛤 · 其一",
+                    "filename": "chang_anime_6_qian_ben_ha.mp3"
+                },
+                {
+                    "title": "千本蛤 · 其二",
+                    "filename": "chang_anime_8_qian_ben_ha_2.mp3"
+                },
+                {
+                    "title": "白金蛤督",
+                    "filename": "chang_anime_7_bai_jin_ha_du.mp3"
+                }
+            ]
+        }
+    ]
 }
 )

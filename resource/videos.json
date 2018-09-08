@@ -1,47 +1,167 @@
 json_callback(
 {
+    "type": 1,
     "url": "https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/",
-    "蛤三篇总集": {
-        "ha_san_pian_zong_ji/nu_chi_1080p.mp4": "怒斥1080p",
-        "ha_san_pian_zong_ji/nu_chi.mp4": "怒斥",
-        "ha_san_pian_zong_ji/shi_cha_er_yuan.mp4": "蛤三篇之视察二院",
-        "ha_san_pian_zong_ji/tan_xiao_feng_sheng.mp4": "谈笑风生中文字幕 - 20分钟精华版"
-    },
-    "膜学选修教材": {
-        "mo_xue_xuan_xiu_jiao_cai/1990_nian_chun_wan.mp4": "1990年春晚",
-        "mo_xue_xuan_xiu_jiao_cai/1997_nian_fang_mei_jie_jian_wo_guo_dai_biao.mp4": "1997年访美接见我国驻美使馆、驻美机构工作人员和留学生代表",
-        "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_xie_ren_yan_jiang.mp4": "2002年11月15日长者卸任演讲",
-        "mo_xue_xuan_xiu_jiao_cai/97_nian_fang_mei_zui_hou_yi_zhan_luo_shan_ji.mp4": "97年访美最后一站洛杉矶",
-        "mo_xue_xuan_xiu_jiao_cai/MV-jiang_zong_shu_ji_shi_cha_lai_dao_zan_men_cun.mp4": "MV《江总书记视察来到咱们村》",
-        "mo_xue_xuan_xiu_jiao_cai/Thank you very much.mp4": "Thank you very much",
-        "mo_xue_xuan_xiu_jiao_cai/shang_hai_jiao_tong_da_xue_100_zhou_nian_xiao_qing.mp4": "上海交通大学100周年校庆",
-        "mo_xue_xuan_xiu_jiao_cai/bei_jing_shen_ao_cheng_gong_san_gou_hua.mp4": "北京申奥成功三句话",
-        "mo_xue_xuan_xiu_jiao_cai/hua_lai_shi_zhuan_fang.mp4": "华莱士专访",
-        "mo_xue_xuan_xiu_jiao_cai/jiang_ze_min_yong_ying_wen_xuan_bu_niu_yue_zheng_jiao_suo_kai_shi.mp4": "江泽民用英文宣布纽约证交所开市",
-        "mo_xue_xuan_xiu_jiao_cai/xia_wei_yi_ji_ta--qing_zhou_zhang_fu_ren_yan_chang_wan_zheng_ban.mp4": "夏威夷吉他--请州长夫人演唱完整版",
-        "mo_xue_xuan_xiu_jiao_cai/xia_wei_yi_ji_ta.mp4": "夏威夷吉他",
-        "mo_xue_xuan_xiu_jiao_cai/ru_guo_shui_hai_you_yi_dian_cheng_ji_jiu_shi_jun_dui_yi_lu_bu_de_cong_shang.mp4": "如果说还有一点成绩就是军队一律不得从商！",
-        "mo_xue_xuan_xiu_jiao_cai/wo_hen_xiang_gen_ni_men_mei_yi_ge_ren_wo_shou.mp4": "我很想跟你们每一个人握手",
-        "mo_xue_xuan_xiu_jiao_cai/wo_ren_wei-kong_pa_wo_gang_cai_jiang_de_zhe_ge_nei_rong_a.mp4": "我认为，恐怕我刚才讲的这个内容啊",
-        "mo_xue_xuan_xiu_jiao_cai/wo_jiang_de_shi_pu_tong_hua.mp4": "我讲的是普通话",
-        "mo_xue_xuan_xiu_jiao_cai/ba_deng_xiao_ping_li_lun_lie_ru_dang_zhang.mp4": "把邓小平理论列入党章",
-        "mo_xue_xuan_xiu_jiao_cai/ge_chang_zu_guo--zhang_zhe_yuan_sheng.mp4": "歌唱祖国--长者原声",
-        "mo_xue_xuan_xiu_jiao_cai/mao_wang.mp4": "江泽民主席演唱猫王 love me tender 及跳cha cha舞的片段",
-        "mo_xue_xuan_xiu_jiao_cai/que_li_le_she_hui_zhu_yi_shi_chang_jing_ji.mp4": "确立了社会主义市场经济",
-        "mo_xue_xuan_xiu_jiao_cai/mo_wei_fu_yun_zhe_wang_yan_zhi_yuan_shen_zai_zhui_gao_cheng.mp4": "莫为浮云遮望眼，只缘身在坠高城",
-        "mo_xue_xuan_xiu_jiao_cai/dong_xian_sheng_jiu_zhi_yan_jiang.mp4": "董先生就职演讲",
-        "mo_xue_xuan_xiu_jiao_cai/tan_xiao_feng_sheng_part2.mp4": "谈笑风生part2",
-        "mo_xue_xuan_xiu_jiao_cai/hai_you_98_nian_kang_hong_ye_shi_hen_da_de.mp4": "还有98年抗洪也是很大的",
-        "mo_xue_xuan_xiu_jiao_cai/deng_xiao_ping_ai_dao_hui_zhang_zhe_zhi_ci.mp4": "邓小平哀悼会长者致辞",
-        "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_e_yu_xiu.mp4": "长者俄语秀",
-        "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_yue_yu_jing_ju.mp4": "长者粤语&京剧",
-        "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_tan_yin_yue.mp4": "长者谈音乐",
-        "mo_xue_xuan_xiu_jiao_cai/niao_qiang_huan_pao.mp4": "鸟枪换炮",
-        "mo_xue_xuan_xiu_jiao_cai/gu_zhang.mp4":"鼓掌",
-        "mo_xue_xuan_xiu_jiao_cai/shi_shang_zui_qiang_bi_ye_ge.mp4":"史上最强毕业歌阵容"
-    },
-    "其虵":{
-        "qian_ben_ha.mp4":"千本蛤"
-    }
+    "contents": [
+        {
+            "title": "蛤三篇总集",
+            "contents": [
+                {
+                    "title": "怒斥1080p",
+                    "filename": "ha_san_pian_zong_ji/nu_chi_1080p.mp4"
+                },
+                {
+                    "title": "怒斥",
+                    "filename": "ha_san_pian_zong_ji/nu_chi.mp4"
+                },
+                {
+                    "title": "蛤三篇之视察二院",
+                    "filename": "ha_san_pian_zong_ji/shi_cha_er_yuan.mp4"
+                },
+                {
+                    "title": "谈笑风生中文字幕 - 20分钟精华版",
+                    "filename": "ha_san_pian_zong_ji/tan_xiao_feng_sheng.mp4"
+                }
+            ]
+        },
+        {
+            "title": "膜学选修教材",
+            "contents": [
+                {
+                    "title": "1990年春晚",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/1990_nian_chun_wan.mp4"
+                },
+                {
+                    "title": "1997年访美接见我国驻美使馆、驻美机构工作人员和留学生代表",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/1997_nian_fang_mei_jie_jian_wo_guo_dai_biao.mp4"
+                },
+                {
+                    "title": "2002年11月15日长者卸任演讲",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_xie_ren_yan_jiang.mp4"
+                },
+                {
+                    "title": "97年访美最后一站洛杉矶",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/97_nian_fang_mei_zui_hou_yi_zhan_luo_shan_ji.mp4"
+                },
+                {
+                    "title": "MV《江总书记视察来到咱们村》",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/MV-jiang_zong_shu_ji_shi_cha_lai_dao_zan_men_cun.mp4"
+                },
+                {
+                    "title": "Thank you very much",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/Thank you very much.mp4"
+                },
+                {
+                    "title": "上海交通大学100周年校庆",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/shang_hai_jiao_tong_da_xue_100_zhou_nian_xiao_qing.mp4"
+                },
+                {
+                    "title": "北京申奥成功三句话",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/bei_jing_shen_ao_cheng_gong_san_gou_hua.mp4"
+                },
+                {
+                    "title": "华莱士专访",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/hua_lai_shi_zhuan_fang.mp4"
+                },
+                {
+                    "title": "江泽民用英文宣布纽约证交所开市",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/jiang_ze_min_yong_ying_wen_xuan_bu_niu_yue_zheng_jiao_suo_kai_shi.mp4"
+                },
+                {
+                    "title": "夏威夷吉他--请州长夫人演唱完整版",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/xia_wei_yi_ji_ta--qing_zhou_zhang_fu_ren_yan_chang_wan_zheng_ban.mp4"
+                },
+                {
+                    "title": "夏威夷吉他",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/xia_wei_yi_ji_ta.mp4"
+                },
+                {
+                    "title": "如果说还有一点成绩就是军队一律不得从商！",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/ru_guo_shui_hai_you_yi_dian_cheng_ji_jiu_shi_jun_dui_yi_lu_bu_de_cong_shang.mp4"
+                },
+                {
+                    "title": "我很想跟你们每一个人握手",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/wo_hen_xiang_gen_ni_men_mei_yi_ge_ren_wo_shou.mp4"
+                },
+                {
+                    "title": "我认为，恐怕我刚才讲的这个内容啊",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/wo_ren_wei-kong_pa_wo_gang_cai_jiang_de_zhe_ge_nei_rong_a.mp4"
+                },
+                {
+                    "title": "我讲的是普通话",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/wo_jiang_de_shi_pu_tong_hua.mp4"
+                },
+                {
+                    "title": "把邓小平理论列入党章",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/ba_deng_xiao_ping_li_lun_lie_ru_dang_zhang.mp4"
+                },
+                {
+                    "title": "歌唱祖国--长者原声",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/ge_chang_zu_guo--zhang_zhe_yuan_sheng.mp4"
+                },
+                {
+                    "title": "江泽民主席演唱猫王 love me tender 及跳cha cha舞的片段",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/mao_wang.mp4"
+                },
+                {
+                    "title": "确立了社会主义市场经济",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/que_li_le_she_hui_zhu_yi_shi_chang_jing_ji.mp4"
+                },
+                {
+                    "title": "莫为浮云遮望眼，只缘身在坠高城",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/mo_wei_fu_yun_zhe_wang_yan_zhi_yuan_shen_zai_zhui_gao_cheng.mp4"
+                },
+                {
+                    "title": "董先生就职演讲",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/dong_xian_sheng_jiu_zhi_yan_jiang.mp4"
+                },
+                {
+                    "title": "谈笑风生part2",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/tan_xiao_feng_sheng_part2.mp4"
+                },
+                {
+                    "title": "还有98年抗洪也是很大的",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/hai_you_98_nian_kang_hong_ye_shi_hen_da_de.mp4"
+                },
+                {
+                    "title": "邓小平哀悼会长者致辞",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/deng_xiao_ping_ai_dao_hui_zhang_zhe_zhi_ci.mp4"
+                },
+                {
+                    "title": "长者俄语秀",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_e_yu_xiu.mp4"
+                },
+                {
+                    "title": "长者粤语&京剧",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_yue_yu_jing_ju.mp4"
+                },
+                {
+                    "title": "长者谈音乐",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/zhang_zhe_tan_yin_yue.mp4"
+                },
+                {
+                    "title": "鸟枪换炮",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/niao_qiang_huan_pao.mp4"
+                },
+                {
+                    "title": "鼓掌",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/gu_zhang.mp4"
+                },
+                {
+                    "title": "史上最强毕业歌阵容",
+                    "filename": "mo_xue_xuan_xiu_jiao_cai/shi_shang_zui_qiang_bi_ye_ge.mp4"
+                }
+            ]
+        },
+        {
+            "title": "其虵",
+            "contents": [
+                {
+                    "title": "千本蛤",
+                    "filename": "qian_ben_ha.mp4"
+                }
+            ]
+        }
+    ]
 }
 )
