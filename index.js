@@ -12,8 +12,9 @@ const getArgs = () => {
 // 网页内全屏视频
 const full_screen_video = () => {
     $("#modal").after($(".modal_media"))
-    $(".modal_media").addClass("full_screen_video")
-                     .after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
+    $(".modal_media")
+        .addClass("full_screen_video")
+        .after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
 }
 const exit_full_screen_video = () => {
     $("#exit_full_screen_video").remove()
@@ -81,7 +82,7 @@ const json_callback = (data) => {
                     break;
                 }
                 case "chang": {
-                    item_html += `<li class="list-group-item grey chang"><span class="audio_title">${json[key][items[a]]}</span><a href="${json["url"]}${items[a]}.mp3" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}.mp3" controls></audio></li>`
+                    item_html += `<li class="list-group-item grey chang"><span class="audio_title">${json[key][items[a]]}</span><a href="${json["url"]}${items[a]}" target="_blank" class="download_music" download><i class="fa fa-download" aria-hidden="true"></i></a><audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${json["url"]}${items[a]}" controls></audio></li>`
                     break;
                 }
                 case "videos": {
