@@ -37,7 +37,7 @@ const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
     $(".modal-body").css("padding", "20px 24px 0px")
 }
 
-const init_video_img_modal = (src, title, type) => {
+const init_video_img_modal = (src, title, type) => { // 初始化视频、图片对话框 (type==1)
     $("#m_title").text(title)
     $("#m_body").html(type == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
 
