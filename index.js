@@ -52,6 +52,9 @@ const init_video_img_modal = (src, title, type) => {
 
 const json_callback = (data) => { // 解析资源文件，显示内容
 
+    // 清空内容
+    $("#card-deck").html("")
+
     // 解析资源文件为json
     if (typeof data == "string") {
         var data_split = data.split("\n");
@@ -126,12 +129,15 @@ const init = () => { // 初始化页面
     $(".nav-link").removeClass('active')
     $("#" + t).addClass('active')
 
-    // 清空内容
-    $("#card-deck").html("")
+    // 清空内容并显示加载中画面
+    $("#card-deck").html(`
+    <div class="card">
+        <h5 class="card-header">加载中, 请稍后...</h5>
+    </div>`)
 
     // 获取资源文件
     if (_offline) {
-        // 强行解决Firefox中不能访问本地资源的问题
+        // 强行解决Firefox中不能访问本地资源的问题, 不保证长期有效
         var json_element = document.createElement("script")
         json_element.src = `resource/${t}.json?callback=json_callback`
         document.getElementsByTagName("body")[0].appendChild(json_element)
