@@ -149,7 +149,9 @@ const show_bottom_nav = (l = [
     }
 ]
 ) => { // 显示底部导航条
-    for (const {id, name, icon} of l) {
+    for (var i = 0; i < l.length; i++) {
+        const { id, name, icon } = l[i] // 不用for...of.., 因为用了后babel后的代码会复杂很多, 还需要引入babel-polyfill
+
         $(".bottom-nav").append(`
         <li class="nav-item">
             <a class="nav-link" href="#/${id}" id="${id}">
