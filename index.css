@@ -101,13 +101,6 @@ body {
     color: #2196F3 !important;
 }
 
-.navbar-close {
-    font-size: 20px;
-    margin-right: 1rem;
-    color: white;
-    display: none;
-}
-
 .download_music {
     position: absolute;
     right: 0px;
