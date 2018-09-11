@@ -135,7 +135,7 @@ const show_bottom_nav = (l = [
     {
         id: "dou",
         name: "逗",
-        icon: "smile"
+        icon: "smile-o"
     },
     {
         id: "chang",
@@ -149,7 +149,7 @@ const show_bottom_nav = (l = [
     }
 ]
 ) => { // 显示底部导航条
-    for (const [id, name, icon] of l) {
+    for (const {id, name, icon} of l) {
         $(".bottom-nav").append(`
         <li class="nav-item">
             <a class="nav-link" href="#/${id}" id="${id}">
