@@ -2,9 +2,15 @@
     background-color: #2196F3 !important;
 }
 
+html {
+    /* 强制在加载中时显示垂直滚动条 */
+    overflow:-moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
 body {
     background-size: cover;
-    font-family: "Microsoft YaHei", 微软雅黑;
+    font-family: "Microsoft YaHei", "微软雅黑";
 }
 
 .top-nav {

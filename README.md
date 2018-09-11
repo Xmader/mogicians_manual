@@ -1,6 +1,6 @@
 # 膜法指南 网页版
 
-![真正的粉丝](banner.png)
+![真正的粉丝](img/banner.png)
 
 ## 简介
 科学膜蛤，学习一个，提高姿势水平；
@@ -33,12 +33,12 @@
 * 使用`git clone`或[下载](https://github.com/Xmader/mogicians_manual/archive/offline.zip)`offline`分支, 双击`index.html`在浏览器中打开
 
 ## 截屏
-![说](说.PNG)
-![学](学.PNG)
-![逗](逗.PNG)
-![唱](唱.PNG)
-![赏](赏.PNG)
-![赏-播放中](赏-播放中.PNG)
+![说](img/说.PNG)
+![学](img/学.PNG)
+![逗](img/逗.PNG)
+![唱](img/唱.PNG)
+![赏](img/赏.PNG)
+![赏-播放中](img/赏-播放中.PNG)
 
 ## 特别感谢
 
