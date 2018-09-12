@@ -45,5 +45,31 @@ const init_video_img_modal = (src, title) => { // 初始化视频、图片对话
     $(".modal-body").css("padding", "20px 0px")
 }
 
+Vue.component('vue-modal', {
+    template: `
+        <div class="modal" tabindex="-1" role="dialog" id="modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="m_title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal').modal('hide')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="m_body"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modal').modal('hide')">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `,
+    data: () => ({}),
+    methods: {
+    }
+})
+
 // 实现关闭对话框自动结束播放视频
 $('#modal').on('hidden.bs.modal', (e) => $("#m_body").html(" "))
