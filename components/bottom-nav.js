@@ -13,11 +13,24 @@ Vue.component('nav-item', {
     props: ["id", "icon", "name"],
     template: `
         <li class="nav-item">
-            <a class="nav-link" :href="'#/'+id" :id="id">
+            <a :class="['nav-link',{ active: isActive }]" :href="'#/'+id" :id="id" @click="active()">
                 <i :class="['fa','fa-'+icon]" aria-hidden="true"></i> &nbsp;{{name}}
             </a>
         </li>
     `,
+    computed: {
+        isActive: function () {
+            return (location.hash.slice(2) || "shuo") == this.id
+        }
+    },
+    methods: {
+        active: function () {
+            // this.isActive = (location.hash.slice(2) || "shuo") == this.id
+            // 底部导航条高亮当前子页面
+            $(".nav-link").removeClass('active')
+            $("#" + this.id).addClass('active')
+        }
+    }
 })
 
 Vue.component('bottom-nav', {

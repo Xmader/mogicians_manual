@@ -127,10 +127,6 @@ const init = () => { // 初始化页面
     // 获取当前的子页面名
     t = location.hash.slice(2) || "shuo"
 
-    // 底部导航条高亮当前子页面
-    $(".nav-link").removeClass('active')
-    $("#" + t).addClass('active')
-
     // 清空内容并显示加载中画面
     $("#card-deck").html(`
     <div class="card">
