@@ -14,6 +14,7 @@
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "babel-preset-minify": "^0.4.3",
     "http-server": "^0.11.1",
     "jquery": "^3.3.1"
   },
