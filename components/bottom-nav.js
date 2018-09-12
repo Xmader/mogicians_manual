@@ -5,7 +5,8 @@
  * Copyright (c) 2018 Xmader
  * Released under the MIT license
  * 
- * 底部导航条组件
+ * bottom-nav.js - 底部导航条Vue组件
+ * 
 */
 
 Vue.component('nav-item', {

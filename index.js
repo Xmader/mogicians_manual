@@ -123,46 +123,6 @@ const json_callback = (data) => { // 解析资源文件，显示内容
     }
 }
 
-const show_bottom_nav = (l = [
-    {
-        id: "shuo",
-        name: "说",
-        icon: "microphone"
-    },
-    {
-        id: "xue",
-        name: "学",
-        icon: "book"
-    },
-    {
-        id: "dou",
-        name: "逗",
-        icon: "smile-o"
-    },
-    {
-        id: "chang",
-        name: "唱",
-        icon: "music"
-    },
-    {
-        id: "videos",
-        name: "赏",
-        icon: "film"
-    }
-]
-) => { // 显示底部导航条
-    for (var i = 0; i < l.length; i++) {
-        const { id, name, icon } = l[i] // 不用for...of.., 因为用了后babel后的代码会复杂很多, 还需要引入babel-polyfill
-
-        $(".bottom-nav").append(`
-        <li class="nav-item">
-            <a class="nav-link" href="#/${id}" id="${id}">
-                <i class="fa fa-${icon}" aria-hidden="true"></i> &nbsp;${name}</a>
-        </li>
-        `)
-    }
-}
-
 const init = () => { // 初始化页面
     // 获取当前的子页面名
     t = location.hash.slice(2) || "shuo"
