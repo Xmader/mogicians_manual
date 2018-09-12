@@ -12,9 +12,9 @@
 Vue.component('bottom-nav', {
     template: `
         <ul :class="bottom_nav" id="bottom-nav">
-            <li class="nav-item" v-for="nav of navs">
-                <a :class="['nav-link',{ active: Active_Item == nav.id }]" :href="'#/'+nav.id" :id="nav.id" @click="active(nav.id)">
-                    <i :class="['fa','fa-'+nav.icon]" aria-hidden="true"></i> &nbsp;{{nav.name}}
+            <li class="nav-item" v-for="{id,icon,name} of navs">
+                <a :class="['nav-link',{ active: Active_Item == id }]" :href="'#/'+id" :id="id" @click="active(id)">
+                    <i :class="['fa','fa-'+icon]" aria-hidden="true"></i> &nbsp;{{name}}
                 </a>
             </li>
         </ul>
