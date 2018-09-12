@@ -1,6 +1,8 @@
 {
     "presets": [
-        "es2015"
+        "@babel/preset-env",
+        "minify"
     ],
-    "plugins": []
+    "plugins": [],
+    "comments": false
 }
