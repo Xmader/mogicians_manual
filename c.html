@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="icon.png">
+    <link rel="shortcut icon" href="icon.png">
+    <title>膜法指南</title>
+</head>
+
+<body>
+    <div id="components-demo">
+        <ul :class="bottom_nav" v-for="nav of navs" >
+            <nav-item :nav_id="nav.id" :nav_icon="nav.icon" :nav_name="nav.name"></nav-item>
+        </ul>
+    </div>
+    <script src="src/jquery.min.js"></script>
+    <script src="src/vue.js"></script>
+    <script>
+        Vue.component('nav-item', {
+            props: ["nav_id","nav_icon","nav_name"],
+            template: `
+                <li class="nav-item">
+                    <a class="nav-link" :href="'#/'+nav_id" :id="nav_id">
+                        <i :class="['fa','fa-'+nav_icon]" aria-hidden="true"></i> &nbsp;{{nav_name}}
+                    </a>
+                </li>
+
+            `,
+            computed: {
+                
+            }
+
+        })
+        new Vue({
+            el: '#components-demo',
+            data: {
+                "bottom_nav": ["nav", "nav-pills", "nav-fill", "bottom-nav"],
+                "navs": [
+                    {
+                        id: "shuo",
+                        name: "说",
+                        icon: "microphone"
+                    },
+                    {
+                        id: "xue",
+                        name: "学",
+                        icon: "book"
+                    },
+                    {
+                        id: "dou",
+                        name: "逗",
+                        icon: "smile-o"
+                    },
+                    {
+                        id: "chang",
+                        name: "唱",
+                        icon: "music"
+                    },
+                    {
+                        id: "videos",
+                        name: "赏",
+                        icon: "film"
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
