@@ -13,26 +13,21 @@
 <body>
     <div id="components-demo">
         <ul :class="bottom_nav" v-for="nav of navs" >
-            <nav-item :nav_id="nav.id" :nav_icon="nav.icon" :nav_name="nav.name"></nav-item>
+            <nav-item v-bind="nav"></nav-item>
         </ul>
     </div>
     <script src="src/jquery.min.js"></script>
     <script src="src/vue.js"></script>
     <script>
         Vue.component('nav-item', {
-            props: ["nav_id","nav_icon","nav_name"],
+            props: ["id","icon","name"],
             template: `
                 <li class="nav-item">
-                    <a class="nav-link" :href="'#/'+nav_id" :id="nav_id">
-                        <i :class="['fa','fa-'+nav_icon]" aria-hidden="true"></i> &nbsp;{{nav_name}}
+                    <a class="nav-link" :href="'#/'+id" :id="id">
+                        <i :class="['fa','fa-'+icon]" aria-hidden="true"></i> &nbsp;{{name}}
                     </a>
                 </li>
-
             `,
-            computed: {
-                
-            }
-
         })
         new Vue({
             el: '#components-demo',
