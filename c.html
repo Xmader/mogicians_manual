@@ -11,16 +11,14 @@
 </head>
 
 <body>
-    <div id="components-demo">
-        <ul :class="bottom_nav" v-for="nav of navs" >
-            <nav-item v-bind="nav"></nav-item>
-        </ul>
+    <div id="app">
+        <bottom-nav></bottom-nav>
     </div>
     <script src="src/jquery.min.js"></script>
     <script src="src/vue.js"></script>
     <script>
         Vue.component('nav-item', {
-            props: ["id","icon","name"],
+            props: ["id", "icon", "name"],
             template: `
                 <li class="nav-item">
                     <a class="nav-link" :href="'#/'+id" :id="id">
@@ -29,9 +27,9 @@
                 </li>
             `,
         })
-        new Vue({
-            el: '#components-demo',
-            data: {
+
+        Vue.component('bottom-nav', {
+            data: () => ({
                 "bottom_nav": ["nav", "nav-pills", "nav-fill", "bottom-nav"],
                 "navs": [
                     {
@@ -60,7 +58,17 @@
                         icon: "film"
                     }
                 ]
-            }
+            }),
+            template: `
+                <ul :class="bottom_nav" id="bottom-nav">
+                    <nav-item v-bind="nav" v-for="nav of navs"></nav-item>
+                </ul>
+            `
+        })
+
+        new Vue({
+            el: '#app',
+
         })
     </script>
 </body>
