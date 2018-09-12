@@ -3,9 +3,7 @@
 }
 
 html {
-    /* 强制在加载中时显示垂直滚动条 */
-    overflow:-moz-scrollbars-vertical;
-    overflow-y: scroll;
+    height: 100.1%
 }
 
 body {
