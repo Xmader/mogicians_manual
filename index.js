@@ -39,15 +39,15 @@ const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
     $(".modal-body").css("padding", "20px 24px 0px")
 }
 
-const init_video_img_modal = (src, title, type) => { // 初始化视频、图片对话框 (type==1)
+const init_video_img_modal = (src, title) => { // 初始化视频、图片对话框 (type==1)
     $("#m_title").text(title)
-    $("#m_body").html(type == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
+    $("#m_body").html(t == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
 
     $(".download_video").remove()
-    $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${type == "dou" ? "图片" : "视频"}</a>`)
+    $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${t == "dou" ? "图片" : "视频"}</a>`)
 
     $("#full_screen_video").remove()
-    if (type != "dou" && (typeof _cordova == "undefined")) { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
+    if (t != "dou" && (typeof _cordova == "undefined")) { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
 
     $(".modal-body").css("padding", "20px 0px")
 }
@@ -94,9 +94,9 @@ const json_callback = (data) => { // 解析资源文件，显示内容
                     break;
                 }
                 default: {
-                    var onclick = (t == "dou" || t == "videos") ? `init_video_img_modal('${url}${item["filename"]}','${title}','${t}');` : `init_modal('${i}','${a}');`
+                    var onclick = (t == "dou" || t == "videos") ? `init_video_img_modal('${url}${item["filename"]}','${title}');` : `init_modal('${i}','${a}');`
                     item_html += `<li class="list-group-item">
-                        <a data-toggle="modal" href="#modal" data-target="#modal" onclick="${onclick}">
+                        <a data-toggle="modal" href="#/${t}" data-target="#modal" onclick="${onclick}">
                             ${title}
                         </a>
                     </li>`
