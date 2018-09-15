@@ -35,6 +35,12 @@
     <script>
         vm = new Vue({
             el: '#app',
+            data: {
+                offline: false
+            },
+            provide: {
+                offline: this.offline
+            }
         })
     </script>
     <script src="resource/offline.js"></script>

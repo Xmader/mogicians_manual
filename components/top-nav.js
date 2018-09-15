@@ -10,6 +10,7 @@
 */
 
 Vue.component('top-nav', {
+    inject: ['offline'],
     template: `
     <nav class="navbar navbar-dark bg-primary top-nav">
         <span class="navbar-brand">
@@ -18,8 +19,6 @@ Vue.component('top-nav', {
         </span>
     </nav>
     `,
-    data: () => ({
-        offline: false
-    }),
+    data: () => ({}),
     methods: {}
 })

@@ -36,6 +36,7 @@ Vue.component('card-deck', {
             </div>
         </div>
     `,
+    inject: ['offline'],
     data: () => ({
         is_Firefox: (navigator.userAgent.indexOf("Firefox") > -1),
         cards: [
@@ -68,7 +69,7 @@ Vue.component('card-deck', {
             // 获取媒体文件的url地址前缀
             if (json["type"] == 1) {
                 var url = json["url"]
-                if (_offline) { url = url.replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
+                if (this.offline) { url = url.replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
             }
 
             for (var i = 0; i < json.contents.length; i++) {
@@ -80,25 +81,21 @@ Vue.component('card-deck', {
                     var json_item = json_items[a]
                     var title = json_item["title"]
 
-
-                    switch (sub_page_name) {
-                        case "chang": {
-                            items.push({
-                                title,
-                                src: `${url}${json_item["filename"]}`
-                            })
-                            break;
-                        }
-                        default: {
-                            items.push({
-                                title,
-                                onclick: (sub_page_name == "dou" || sub_page_name == "videos") ?
-                                    vm.$refs.modal_base.init_video_img_modal(`${url}${json_item["filename"]}`, `${title}`) :
-                                    vm.$refs.modal_base.init_text_modal(`${json_item.content}`, `${title}`)
-                            })
-                        }
+                    if (sub_page_name == "chang") {
+                        items.push({
+                            title,
+                            src: `${url}${json_item["filename"]}`
+                        })
+                    } else {
+                        items.push({
+                            title,
+                            onclick: (sub_page_name == "dou" || sub_page_name == "videos") ?
+                                vm.$refs.modal_base.init_video_img_modal(`${url}${json_item["filename"]}`, `${title}`) :
+                                vm.$refs.modal_base.init_text_modal(`${json_item.content}`, `${title}`)
+                        })
                     }
                 }
+
                 var card = {
                     header: jc["title"],
                     items: items

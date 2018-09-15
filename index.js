@@ -10,7 +10,7 @@
 */
 
 var _offline = !(typeof _offline == "undefined")
-vm.$refs.top_nav.offline = _offline
+vm.offline = _offline
 
 const init = () => { // 初始化页面
     // 获取当前的子页面名
