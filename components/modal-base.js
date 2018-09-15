@@ -56,6 +56,14 @@ Vue.component('modal-base', {
                 src
             })
         },
+        init_text_modal : function (i, a)  { // 初始化文字对话框 (type==0)
+            var item = json.contents[i].contents[a]
+            Object.assign(this, {
+                type: 0,
+                title: item.title,
+                body: "<p>" + item.content.replace(/\n/g, "</p><p>")
+            })
+        },
         full_screen_video: () => { // 网页内全屏视频
             $("#modal").after($(".modal_media"))
             $(".modal_media")

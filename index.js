@@ -58,7 +58,7 @@ const json_callback = (data) => { // 解析资源文件，显示内容
                     break;
                 }
                 default: {
-                    var onclick = (sub_page_name == "dou" || sub_page_name == "videos") ? `vm.$refs.modal_base.init_video_img_modal('${url}${item["filename"]}','${title}');` : `init_modal('${i}','${a}');`
+                    var onclick = (sub_page_name == "dou" || sub_page_name == "videos") ? `vm.$refs.modal_base.init_video_img_modal('${url}${item["filename"]}','${title}');` : `vm.$refs.modal_base.init_text_modal('${i}','${a}');`
                     item_html += `<li class="list-group-item">
                         <a data-toggle="modal" href="#/${sub_page_name}" data-target="#modal" onclick="${onclick}">
                             ${title}
@@ -110,3 +110,5 @@ const init = () => { // 初始化页面
 // hash改变时自动重新初始化页面
 window.onhashchange = () => init()
 
+// 实现关闭对话框自动结束播放视频
+$('#modal').on('hidden.bs.modal', () => { vm.$refs.modal_base.body = " " })
