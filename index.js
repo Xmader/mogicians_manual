@@ -10,7 +10,7 @@
 */
 
 var _offline = !(typeof _offline == "undefined")
-if (_offline) { vm.$refs.top_nav.offline = true }
+vm.$refs.top_nav.offline = _offline
 
 const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1
 
