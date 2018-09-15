@@ -5,7 +5,7 @@
  * Copyright (c) 2018 Xmader
  * Released under the MIT license
  * 
- * modal.js - 模态框(对话框)Vue组件
+ * modal-base.js - 模态框(对话框)Vue基础组件
  * 
 */
 
@@ -45,7 +45,7 @@ const init_video_img_modal = (src, title) => { // 初始化视频、图片对话
     $(".modal-body").css("padding", "20px 0px")
 }
 
-Vue.component('vue-modal', {
+Vue.component('modal-base', {
     template: `
         <div class="modal" tabindex="-1" role="dialog" id="modal">
             <div class="modal-dialog" role="document">
