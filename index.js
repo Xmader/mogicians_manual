@@ -9,8 +9,6 @@
  * 
 */
 
-var _offline = !(typeof _offline == "undefined")
-
 const init = () => { // 初始化页面
     // 获取当前的子页面名
     var sub_page_name = location.hash.slice(2) || "shuo"
@@ -26,7 +24,7 @@ const init = () => { // 初始化页面
     var json_callback = vm.$refs.card_deck.json_callback
 
     // 获取资源文件
-    if (_offline) {
+    if (offline) {
         // 强行解决Firefox中不能访问本地资源的问题, 不保证长期有效
         var json_element = document.createElement("script")
         json_element.src = `resource/${sub_page_name}.json?callback=json_callback`

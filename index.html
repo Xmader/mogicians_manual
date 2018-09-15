@@ -34,11 +34,13 @@
     <script src="components/card-deck.js"></script>
     <script src="resource/offline.js"></script>
     <script>
+        var offline = !(typeof _offline == "undefined")
+
         var vm = new Vue({
             el: '#app',
             provide: function () {
                 return {
-                    offline: !(typeof _offline == "undefined")
+                    offline: offline
                 }
             }
         })
