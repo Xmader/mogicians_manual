@@ -17,7 +17,7 @@ Vue.component('card-deck', {
                 <ul class="list-group list-group-flush">
                     <template v-if="get_sub_page_name() != 'chang'">
                         <li class="list-group-item" v-for="item of card.items">
-                            <a data-toggle="modal" href="#" data-target="#modal" @click="item.onclick">
+                            <a data-toggle="modal" href="#" data-target="#modal" @click="item.onclick()">
                             {{item.title}}
                             </a>
                         </li>
@@ -46,7 +46,7 @@ Vue.component('card-deck', {
         ]
     }),
     computed: {
-        audio_class: function() {return `audio${this.is_Firefox ? "_Firefox" : ""}`}
+        audio_class: function () { return `audio${this.is_Firefox ? "_Firefox" : ""}` }
     },
     methods: {
         get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
@@ -90,10 +90,11 @@ Vue.component('card-deck', {
                             break;
                         }
                         default: {
-                            var onclick = (sub_page_name == "dou" || sub_page_name == "videos") ? `vm.$refs.modal_base.init_video_img_modal('${url}${json_item["filename"]}','${title}');` : `vm.$refs.modal_base.init_text_modal('${json_item.content}','${title}');`
                             items.push({
                                 title,
-                                onclick
+                                onclick: (sub_page_name == "dou" || sub_page_name == "videos") ?
+                                    vm.$refs.modal_base.init_video_img_modal(`${url}${json_item["filename"]}`, `${title}`) :
+                                    vm.$refs.modal_base.init_text_modal(`${json_item.content}`, `${title}`)
                             })
                         }
                     }
@@ -102,7 +103,7 @@ Vue.component('card-deck', {
                     header: jc["title"],
                     items: items
                 }
-                console.log(card)
+
                 this.cards.push(card)
             }
 

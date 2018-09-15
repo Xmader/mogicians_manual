@@ -49,15 +49,15 @@ Vue.component('modal-base', {
         get_sub_page_name: () => location.hash.slice(2) || "shuo",
         hide: () => $('#modal').modal('hide'),
         init_video_img_modal: function (src, title) { // 初始化视频、图片对话框 (type==1)
-            Object.assign(this, {
+            return () => Object.assign(this, {
                 type: 1,
                 title,
                 body: (this.get_sub_page_name() == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`),
                 src
             })
         },
-        init_text_modal : function (content, title)  { // 初始化文字对话框 (type==0)
-            Object.assign(this, {
+        init_text_modal: function (content, title) { // 初始化文字对话框 (type==0)
+            return () => Object.assign(this, {
                 type: 0,
                 title: title,
                 body: "<p>" + content.replace(/\n/g, "</p><p>")
