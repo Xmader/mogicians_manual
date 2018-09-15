@@ -25,6 +25,7 @@ Vue.component('modal-base', {
                     </div>
                     <div class="modal-footer">
                         <button v-if="type == 1 && get_sub_page_name() != 'dou' && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
+                        <a v-if="type == 1" :href="src" target="_blank" class="btn btn-primary download_video" download>下载{{get_sub_page_name() == "dou" ? "图片" : "视频"}}</a>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hide()">关闭</button>
                     </div>
                 </div>
@@ -34,7 +35,8 @@ Vue.component('modal-base', {
     data: () => ({
         type: 0,
         title: "",
-        body: ""
+        body: "",
+        src: ""
     }),
     computed: {
         modal_body_style: function () {
@@ -50,13 +52,13 @@ Vue.component('modal-base', {
             $("#modal").after($(".modal_media"))
             $(".modal_media")
                 .addClass("full_screen_video")
-                .after(`<button type="button" class="btn btn-primary" onclick="modal_base.exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
+                .after(`<button type="button" class="btn btn-primary" onclick="vm.$refs.modal_base.exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
         },
         exit_full_screen_video: () => { // 退出网页内全屏视频
             $("#exit_full_screen_video").remove()
             $(".modal_media").removeClass("full_screen_video")
             $("#m_body").append($(".modal_media"))
         },
-        
+
     }
 })
