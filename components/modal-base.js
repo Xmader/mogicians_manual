@@ -5,7 +5,7 @@
  * Copyright (c) 2018 Xmader
  * Released under the MIT license
  * 
- * modal-base.js - 模态框(对话框)Vue基础组件
+ * modal-base.js - 模态框(对话框)Vue组件
  * 
 */
 
@@ -27,29 +27,25 @@ const exit_full_screen_video = () => { // 退出网页内全屏视频
 const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
     var modal_base = vm.$refs.modal_base
     var item = json.contents[i].contents[a]
-    modal_base.type = 0
-    modal_base.title = item.title
-    modal_base.body = "<p>" + item.content.replace(/\n/g, "</p><p>")
-
+    Object.assign(modal_base, {
+        type: 0,
+        title: item.title,
+        body: "<p>" + item.content.replace(/\n/g, "</p><p>")
+    })
 }
 
 const init_video_img_modal = (src, title) => { // 初始化视频、图片对话框 (type==1)
     var modal_base = vm.$refs.modal_base
-    modal_base.type = 1
-    modal_base.title = title
-    modal_base.body = (t == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
-
+    Object.assign(modal_base, {
+        type: 1,
+        title: title,
+        body: (sub_page_name == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
+    })
     $(".download_video").remove()
-    $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${t == "dou" ? "图片" : "视频"}</a>`)
-
-    $("#full_screen_video").remove()
-    if (t != "dou" && (typeof _cordova == "undefined")) { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
+    $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${sub_page_name == "dou" ? "图片" : "视频"}</a>`)
 }
 
 Vue.component('modal-base', {
-    // props: {
-    //     type: Number
-    // },
     template: `
         <div class="modal" tabindex="-1" role="dialog" id="modal">
             <div class="modal-dialog" role="document">
@@ -64,6 +60,7 @@ Vue.component('modal-base', {
                         <p id="m_body" v-html="body"></p>
                     </div>
                     <div class="modal-footer">
+                        <button v-if="type == 1 && get_sub_page_name() != 'dou' && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modal').modal('hide')">关闭</button>
                     </div>
                 </div>
@@ -83,5 +80,6 @@ Vue.component('modal-base', {
         }
     },
     methods: {
+        get_sub_page_name: () => location.hash.slice(2) || "shuo"
     }
 })
