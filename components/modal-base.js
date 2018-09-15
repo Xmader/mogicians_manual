@@ -70,6 +70,3 @@ Vue.component('modal-base', {
     methods: {
     }
 })
-
-// 实现关闭对话框自动结束播放视频
-$('#modal').on('hidden.bs.modal', (e) => $("#m_body").html(" "))
