@@ -15,22 +15,20 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-dark bg-primary top-nav">
-            <span class="navbar-brand">
-                <i class="fa fa-graduation-cap" aria-hidden="true"></i> 膜法指南
-            </span>
-        </nav>
+        <top-nav ref="top_nav"></top-nav>
+
         <div class="container">
             <card-deck ref="card_deck"></card-deck>
         </div>
 
-
         <bottom-nav></bottom-nav>
+
         <modal-base ref="modal_base"></modal-base>
     </div>
 
     <script src="libs/jquery.min.js"></script>
     <script src="libs/vue.js"></script>
+    <script src="components/top-nav.js"></script>
     <script src="components/bottom-nav.js"></script>
     <script src="components/modal-base.js"></script>
     <script src="components/card-deck.js"></script>

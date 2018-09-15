@@ -10,7 +10,7 @@
 */
 
 var _offline = !(typeof _offline == "undefined")
-if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
+if (_offline) { vm.$refs.top_nav.offline = true }
 
 const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1
 
