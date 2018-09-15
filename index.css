@@ -1,3 +1,7 @@
+@import 'libs/bootstrap-material-design.min.css';
+
+@import 'libs/font-awesome.min.css';
+
 .bg-primary {
     background-color: #2196F3 !important;
 }
