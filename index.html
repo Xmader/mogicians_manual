@@ -21,18 +21,19 @@
             </span>
         </nav>
         <div class="container">
-            <div id="card-deck"></div>
+            <card-deck ref="card_deck"></card-deck>
         </div>
 
 
         <bottom-nav></bottom-nav>
-        <modal-base  ref="modal_base"></modal-base>
+        <modal-base ref="modal_base"></modal-base>
     </div>
 
     <script src="libs/jquery.min.js"></script>
     <script src="libs/vue.js"></script>
     <script src="components/bottom-nav.js"></script>
     <script src="components/modal-base.js"></script>
+    <script src="components/card-deck.js"></script>
     <script>
         vm = new Vue({
             el: '#app',

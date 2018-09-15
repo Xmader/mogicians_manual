@@ -92,10 +92,7 @@ const init = () => { // 初始化页面
     sub_page_name = location.hash.slice(2) || "shuo"
 
     // 清空内容并显示加载中画面
-    $("#card-deck").html(`
-    <div class="card">
-        <h5 class="card-header">加载中, 请稍后...</h5>
-    </div>`)
+    vm.$refs.card_deck.cards = ['<h5 class="card-header">加载中, 请稍后...</h5>']
 
     // 获取资源文件
     if (_offline) {
