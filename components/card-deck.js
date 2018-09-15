@@ -13,18 +13,43 @@ Vue.component('card-deck', {
     template: `
         <div id="card-deck">
             <div class="card" v-for="card of cards">
-                <div v-html="card"></div>
+                <h5 class="card-header">{{card.header}}</h5>
+                <ul class="list-group list-group-flush">
+                    <template v-if="get_sub_page_name() != 'chang'">
+                        <li class="list-group-item" v-for="item of card.items">
+                            <a data-toggle="modal" href="#" data-target="#modal" @click="item.onclick">
+                            {{item.title}}
+                            </a>
+                        </li>
+                    </template>
+
+                    <template v-else>
+                        <li class="list-group-item grey chang" v-for="item of card.items">
+                            <span class="audio_title">{{item.title}}</span>
+                            <a v-if="is_Firefox" :href="item.src" target="_blank" class="download_music" download>
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                            </a>
+                            <audio :class="audio_class" :src="item.src" controls></audio>
+                        </li>
+                    </template>
+                </ul>
             </div>
         </div>
     `,
     data: () => ({
+        is_Firefox: (navigator.userAgent.indexOf("Firefox") > -1),
         cards: [
-            '<h5 class="card-header">加载中, 请稍后...</h5>'
+            {
+                header: "加载中, 请稍后...",
+                items: []
+            }
         ]
     }),
+    computed: {
+        audio_class: function() {return `audio${this.is_Firefox ? "_Firefox" : ""}`}
+    },
     methods: {
         get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
-        utf8_to_base64: (str) => window.btoa(unescape(encodeURIComponent(str))),
         json_callback: function (data) { // 解析资源文件，显示内容
             var sub_page_name = this.get_sub_page_name()
 
@@ -48,49 +73,41 @@ Vue.component('card-deck', {
 
             for (var i = 0; i < json.contents.length; i++) {
                 var jc = json.contents[i]
-                var items = jc["contents"]
+                var json_items = jc["contents"]
+                var items = []
 
-                var item_html = ""
+                for (var a = 0; a < json_items.length; a++) {
+                    var json_item = json_items[a]
+                    var title = json_item["title"]
 
-                for (var a = 0; a < items.length; a++) {
-                    var item = items[a]
-                    var title = item["title"]
 
                     switch (sub_page_name) {
                         case "chang": {
-                            item_html += `<li class="list-group-item grey chang">
-                                <span class="audio_title">${title}</span>
-                                <a href="${url}${item["filename"]}" target="_blank" class="download_music" download>
-                                    <i class="fa fa-download" aria-hidden="true"></i>
-                                </a>
-                                <audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${url}${item["filename"]}" controls></audio>
-                            </li>`
+                            items.push({
+                                title,
+                                src: `${url}${json_item["filename"]}`
+                            })
                             break;
                         }
                         default: {
-                            var onclick = (sub_page_name == "dou" || sub_page_name == "videos") ? `vm.$refs.modal_base.init_video_img_modal('${url}${item["filename"]}','${title}');` : `vm.$refs.modal_base.init_text_modal('${this.utf8_to_base64(item.content)}','${title}');`
-                            item_html += `<li class="list-group-item">
-                                <a data-toggle="modal" href="#/${sub_page_name}" data-target="#modal" onclick="${onclick}">
-                                    ${title}
-                                </a>
-                            </li>`
+                            var onclick = (sub_page_name == "dou" || sub_page_name == "videos") ? `vm.$refs.modal_base.init_video_img_modal('${url}${json_item["filename"]}','${title}');` : `vm.$refs.modal_base.init_text_modal('${json_item.content}','${title}');`
+                            items.push({
+                                title,
+                                onclick
+                            })
                         }
                     }
                 }
-
-                var html = `<h5 class="card-header">${jc["title"]}</h5>
-                            <ul class="list-group list-group-flush">
-                                ${item_html}
-                            </ul>`;
-
-                this.cards.push(html)
+                var card = {
+                    header: jc["title"],
+                    items: items
+                }
+                console.log(card)
+                this.cards.push(card)
             }
 
             if (sub_page_name == "chang") {
                 $(".list-group-item.chang").css("padding-bottom", $("audio").height() + 23 + "px")
-                if (!is_Firefox) {
-                    $(".download_music").hide()
-                }
             }
         }
     }

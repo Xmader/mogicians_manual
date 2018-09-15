@@ -12,14 +12,17 @@
 var _offline = !(typeof _offline == "undefined")
 vm.$refs.top_nav.offline = _offline
 
-const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1
-
 const init = () => { // 初始化页面
     // 获取当前的子页面名
     var sub_page_name = location.hash.slice(2) || "shuo"
 
     // 清空内容并显示加载中画面
-    vm.$refs.card_deck.cards = ['<h5 class="card-header">加载中, 请稍后...</h5>']
+    vm.$refs.card_deck.cards = [
+        {
+            header: "加载中, 请稍后...",
+            items: []
+        }
+    ]
 
     var json_callback = vm.$refs.card_deck.json_callback
 
