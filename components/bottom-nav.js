@@ -13,7 +13,7 @@ Vue.component('bottom-nav', {
     template: `
         <ul :class="bottom_nav_classes" id="bottom-nav">
             <li class="nav-item" v-for="{id,icon,name} of nav_items" :key="id">
-                <a :class="['nav-link',{ active: Active_Item == id }]" :href="'#/'+id" :id="id" @click="active(id)">
+                <a :class="['nav-link',{ active: active_item == id }]" :href="'#/'+id" :id="id" @click="Active(id)">
                     <i :class="['fa','fa-'+icon]" aria-hidden="true"></i> &nbsp;{{name}}
                 </a>
             </li>
@@ -21,7 +21,7 @@ Vue.component('bottom-nav', {
     `,
     data: () => ({
         "bottom_nav_classes": ["nav", "nav-pills", "nav-fill", "bottom-nav"],
-        "Active_Item": (location.hash.slice(2) || "shuo"),
+        "active_item": (location.hash.slice(2) || "shuo"),
         "nav_items": [
             {
                 id: "shuo",
@@ -51,8 +51,8 @@ Vue.component('bottom-nav', {
         ]
     }),
     methods: {
-        active: function (id) {
-            this.Active_Item = id
+        Active: function (id) {
+            this.active_item = id
         }
     }
 })
