@@ -26,15 +26,16 @@
 
 
         <bottom-nav></bottom-nav>
-        <modal-base></app-modal-base>
+        <modal-base  ref="modal_base"></modal-base>
     </div>
 
     <script src="libs/jquery.min.js"></script>
     <script src="libs/vue.js"></script>
     <script src="components/bottom-nav.js"></script>
     <script src="components/modal-base.js"></script>
+    <!-- <script src="components/modal-text.js"></script> -->
     <script>
-        new Vue({
+        vm = new Vue({
             el: '#app',
         })
     </script>
