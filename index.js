@@ -9,6 +9,17 @@
  * 
 */
 
+var offline = !(typeof _offline == "undefined")
+
+var vm = new Vue({
+    el: '#app',
+    provide: function () {
+        return {
+            offline: offline
+        }
+    }
+})
+
 const init = () => { // 初始化页面
     // 获取当前的子页面名
     var sub_page_name = location.hash.slice(2) || "shuo"

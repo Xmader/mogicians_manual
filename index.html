@@ -24,7 +24,7 @@
         <modal-base ref="modal_base"></modal-base>
     </div>
 
-    <script src="resource/offline.js"></script>
+    <!-- <script src="resource/offline.js"></script> -->
     <script src="libs/jquery.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <script src="libs/vue.min.js"></script>
@@ -32,20 +32,7 @@
     <script src="components/bottom-nav.js"></script>
     <script src="components/modal-base.js"></script>
     <script src="components/card-deck.js"></script>
-    <script>
-        var offline = !(typeof _offline == "undefined")
-
-        var vm = new Vue({
-            el: '#app',
-            provide: function () {
-                return {
-                    offline: offline
-                }
-            }
-        })
-    </script>
     <script src="index.js"></script>
-    <script src="libs/popper.min.js"></script>
     <script src="libs/bootstrap-material-design.min.js"></script>
     <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); }); init();</script>
     <!-- <script src="info.js"></script> -->
