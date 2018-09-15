@@ -47,6 +47,7 @@ Vue.component('modal-base', {
     },
     methods: {
         get_sub_page_name: () => location.hash.slice(2) || "shuo",
+        base64_to_utf8: (str) => decodeURIComponent(escape(window.atob(str))),
         hide: () => $('#modal').modal('hide'),
         init_video_img_modal: function (src, title) { // 初始化视频、图片对话框 (type==1)
             Object.assign(this, {
@@ -56,12 +57,11 @@ Vue.component('modal-base', {
                 src
             })
         },
-        init_text_modal : function (i, a)  { // 初始化文字对话框 (type==0)
-            var item = json.contents[i].contents[a]
+        init_text_modal : function (content, title)  { // 初始化文字对话框 (type==0)
             Object.assign(this, {
                 type: 0,
-                title: item.title,
-                body: "<p>" + item.content.replace(/\n/g, "</p><p>")
+                title: title,
+                body: "<p>" + this.base64_to_utf8(content).replace(/\n/g, "</p><p>")
             })
         },
         full_screen_video: () => { // 网页内全屏视频
