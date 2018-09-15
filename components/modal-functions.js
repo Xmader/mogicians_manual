@@ -20,15 +20,6 @@ const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
     })
 }
 
-const init_video_img_modal = (src, title) => { // 初始化视频、图片对话框 (type==1)
-    Object.assign(modal_base, {
-        type: 1,
-        title,
-        body: (sub_page_name == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`),
-        src
-    })
-}
-
 // 实现关闭对话框自动结束播放视频
 $('#modal').on('hidden.bs.modal', () => { vm.$refs.modal_base.body = " " })
 

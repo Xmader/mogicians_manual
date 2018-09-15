@@ -48,6 +48,14 @@ Vue.component('modal-base', {
     methods: {
         get_sub_page_name: () => location.hash.slice(2) || "shuo",
         hide: () => $('#modal').modal('hide'),
+        init_video_img_modal: function (src, title) { // 初始化视频、图片对话框 (type==1)
+            Object.assign(this, {
+                type: 1,
+                title,
+                body: (this.get_sub_page_name() == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`),
+                src
+            })
+        },
         full_screen_video: () => { // 网页内全屏视频
             $("#modal").after($(".modal_media"))
             $(".modal_media")
