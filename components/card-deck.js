@@ -9,7 +9,7 @@
  * 
 */
 
-Vue.component('card-deck', {
+export default {
     template: `
         <div id="card-deck">
             <div class="card" v-for="card of cards">
@@ -70,6 +70,7 @@ Vue.component('card-deck', {
             this.cards = []
             // this.cards.pop()
 
+            var json
             // 解析资源文件为json
             if (typeof data == "string") {
                 var data_split = data.split("\n");
@@ -136,4 +137,4 @@ Vue.component('card-deck', {
 
         }
     }
-})
+}

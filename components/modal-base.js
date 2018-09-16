@@ -9,7 +9,7 @@
  * 
 */
 
-Vue.component('modal-base', {
+export default {
     template: `
     <div>
         <div class="modal" :class="{ show: show }" :style="{'display': show ? 'block' : 'none', 'padding-right': $_getScrollbarWidth() + 'px' }" tabindex="-1" :aria-hidden="show ? null : true" role="dialog" id="modal" @click.self="hide()">
@@ -118,4 +118,4 @@ Vue.component('modal-base', {
         },
 
     }
-})
+}

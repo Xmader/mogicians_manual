@@ -9,7 +9,7 @@
  * 
 */
 
-Vue.component('bottom-nav', {
+export default {
     template: `
         <ul :class="bottom_nav_classes" id="bottom-nav">
             <li class="nav-item" v-for="{id,icon,name} of nav_items" :key="id">
@@ -55,4 +55,4 @@ Vue.component('bottom-nav', {
             this.active_item = id
         }
     }
-})
+}

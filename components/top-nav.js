@@ -9,7 +9,7 @@
  * 
 */
 
-Vue.component('top-nav', {
+export default {
     inject: ['offline'],
     template: `
     <nav class="navbar navbar-dark bg-primary top-nav">
@@ -21,4 +21,4 @@ Vue.component('top-nav', {
     `,
     data: () => ({}),
     methods: {}
-})
+}

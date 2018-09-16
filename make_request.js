@@ -26,3 +26,5 @@ const make_fetch_request = (url, callback, error_text) => {
 }
 
 const make_get_request = (typeof fetch != "undefined") ? make_fetch_request : make_XHR_request
+
+export default make_get_request

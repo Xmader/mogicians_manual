@@ -9,12 +9,15 @@
  * 
 */
 
-// const Vue = require("vue")
+import Vue from './libs/vue.esm.browser.js'
+import components from './components/components.js'
+import make_get_request from "./make_request.js"
 
 var offline = !(typeof _offline == "undefined")
 
 var vm = new Vue({
     el: '#app',
+    components,
     provide: function () {
         return {
             offline: offline
