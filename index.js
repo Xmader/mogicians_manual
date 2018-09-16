@@ -50,3 +50,5 @@ const init = () => { // 初始化页面
 
 // hash改变时自动重新初始化页面
 window.onhashchange = () => init()
+
+init();
