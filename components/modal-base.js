@@ -21,10 +21,10 @@ Vue.component('modal-base', {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" :style="modal_body_style" v-if="show">
+                    <div class="modal-body" :style="modal_body_style" v-if="show" ref="modal_body">
                         <p id="m_body" v-html="body" v-if="type == 0"></p>
                         <img v-else-if="get_sub_page_name() == 'dou'" :src="src" alt="   图片加载中, 请稍后..." class="modal_media" />
-                        <video v-else v-show="!full_screen" :muted="full_screen" ref="video" :src="src" class="modal_media" preload="auto" controls></video>
+                        <video v-else ref="video" :src="src" class="modal_media" preload="auto" controls></video>
                     </div>
                     <div class="modal-footer">
                         <button v-if="type == 1 && get_sub_page_name() != 'dou' && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
@@ -35,10 +35,7 @@ Vue.component('modal-base', {
             </div>
         </div>
 
-        <template v-if="get_sub_page_name() == 'videos' && show">
-            <video v-show="full_screen" :src="src" ref="video_full_screen" class="modal_media full_screen_video" preload="auto" controls></video>
-            <button v-if="full_screen" type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
-        </template>
+        <button v-if="full_screen" type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
         
         <div class="modal-backdrop show" v-if="show"></div>
     </div>
@@ -71,15 +68,6 @@ Vue.component('modal-base', {
                 body_style["padding-right"] = bottom_nav_style["padding-right"] = ""
                 classList.remove("modal-open")
             }
-        },
-        full_screen: function(full_screen){
-            var refs = this.$refs
-            var v0 = full_screen ? refs.video_full_screen : refs.video
-            var v1 = full_screen ? refs.video : refs.video_full_screen
-                
-            v0.currentTime = v1.currentTime
-            !v1.paused && v0.play()
-            v1.pause()
         }
     },
     methods: {
@@ -112,9 +100,20 @@ Vue.component('modal-base', {
         },
         full_screen_video: function () { // 网页内全屏视频
             this.full_screen = true
+
+            var e = this.$refs.video
+
+            document.body.appendChild(e);
+            e.classList.add("full_screen_video")
         },
         exit_full_screen_video: function () { // 退出网页内全屏视频
             this.full_screen = false
+
+            var e = this.$refs.video
+            var modal_body = this.$refs.modal_body
+
+            modal_body.appendChild(e);
+            e.classList.remove("full_screen_video")
         },
 
     }
