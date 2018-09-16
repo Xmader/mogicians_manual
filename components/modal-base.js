@@ -21,8 +21,10 @@ Vue.component('modal-base', {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" :style="modal_body_style">
-                        <p id="m_body" v-html="body"></p>
+                    <div class="modal-body" :style="modal_body_style" v-if="show">
+                        <p id="m_body" v-html="body" v-if="type == 0"></p>
+                        <img v-else-if="get_sub_page_name() == 'dou'" :src="src" alt=" &nbsp;&nbsp;&nbsp;&nbsp;图片加载中, 请稍后..." class="modal_media" />
+                        <video v-else-if="!full_screen" :src="src" class="modal_media" preload="auto" controls></video>
                     </div>
                     <div class="modal-footer">
                         <button v-if="type == 1 && get_sub_page_name() != 'dou' && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
@@ -33,8 +35,11 @@ Vue.component('modal-base', {
             </div>
         </div>
 
-        <button v-if="full_screen" type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
-
+        <template v-if="full_screen">
+            <video :src="src" class="modal_media full_screen_video" preload="auto" controls></video>
+            <button type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
+        </template>
+        
         <div class="modal-backdrop show" v-if="show"></div>
     </div>
     `,
@@ -65,7 +70,6 @@ Vue.component('modal-base', {
             } else {
                 body_style["padding-right"] = bottom_nav_style["padding-right"] = ""
                 classList.remove("modal-open")
-                this.body = " " // 实现关闭对话框自动结束播放视频
             }
         },
     },
@@ -85,8 +89,8 @@ Vue.component('modal-base', {
                 show: true,
                 type: 1,
                 title,
-                body: (this.get_sub_page_name() == "dou" ? `<img src="${src}" alt=" &nbsp;&nbsp;&nbsp;&nbsp;图片加载中, 请稍后..." class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`),
-                src
+                src,
+                full_screen: false
             })
         },
         init_text_modal: function (content, title) { // 初始化文字对话框 (type==0)
@@ -99,13 +103,9 @@ Vue.component('modal-base', {
         },
         full_screen_video: function () { // 网页内全屏视频
             this.full_screen = true
-            $("#modal").after($(".modal_media"))
-            $(".modal_media").addClass("full_screen_video")
         },
         exit_full_screen_video: function () { // 退出网页内全屏视频
             this.full_screen = false
-            $(".modal_media").removeClass("full_screen_video")
-            $("#m_body").append($(".modal_media"))
         },
 
     }
