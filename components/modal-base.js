@@ -56,13 +56,14 @@ Vue.component('modal-base', {
     watch: {
         show: function ($_show) {
             var classList = document.body.classList
-            var style = document.body.style
+            var body_style = document.body.style
+            var bottom_nav_style = document.getElementById("bottom-nav").style
 
             if ($_show) {
-                style["padding-right"] = this.$_getScrollbarWidth() + "px"
+                body_style["padding-right"] = bottom_nav_style["padding-right"] = this.$_getScrollbarWidth() + "px"
                 classList.add("modal-open")
             } else {
-                style["padding-right"] = ""
+                body_style["padding-right"] = bottom_nav_style["padding-right"] = ""
                 classList.remove("modal-open")
                 this.body = " " // 实现关闭对话框自动结束播放视频
             }
