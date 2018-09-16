@@ -41,6 +41,7 @@ Vue.component('card-deck', {
         return ({
             is_Firefox: (navigator.userAgent.indexOf("Firefox") > -1),
             audio_element_height: this.$_get_audio_element_height(),
+            _raw_cards:[],
             cards: [
                 {
                     header: "加载中, 请稍后...",
@@ -67,6 +68,7 @@ Vue.component('card-deck', {
 
             // 清空内容
             this.cards = []
+            // this.cards.pop()
 
             // 解析资源文件为json
             if (typeof data == "string") {
@@ -83,13 +85,11 @@ Vue.component('card-deck', {
                 if (this.offline) { url = url.replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
             }
 
-            for (var i = 0; i < json.contents.length; i++) {
-                var jc = json.contents[i]
+            for (var jc of json.contents) {
                 var json_items = jc["contents"]
                 var items = []
 
-                for (var a = 0; a < json_items.length; a++) {
-                    var json_item = json_items[a]
+                for (var json_item of json_items) {
                     var title = json_item["title"]
 
                     if (sub_page_name == "chang") {
@@ -114,6 +114,26 @@ Vue.component('card-deck', {
 
                 this.cards.push(card)
             }
+
+            this._raw_cards = this.cards
+        },
+        search: function (keyword = "", cards = this._raw_cards) { 
+
+            var flat_items = cards
+                .map(card => (card.items))
+                .reduce((l, a) => l.concat(a))
+
+            var new_items = flat_items
+                .sort((a, b) => a.title.localeCompare(b.title))
+                .filter(str => str.title.includes(keyword))
+
+            this.cards = [
+                {
+                    header: "搜索结果：",
+                    items: new_items
+                }
+            ]
+
         }
     }
 })
