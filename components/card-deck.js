@@ -90,8 +90,8 @@ Vue.component('card-deck', {
                         items.push({
                             title,
                             onclick: (sub_page_name == "dou" || sub_page_name == "videos") ?
-                                vm.$refs.modal_base.init_video_img_modal(`${url}${json_item["filename"]}`, `${title}`) :
-                                vm.$refs.modal_base.init_text_modal(`${json_item.content}`, `${title}`)
+                                this.$root.$refs.modal_base.init_video_img_modal(`${url}${json_item["filename"]}`, `${title}`) :
+                                this.$root.$refs.modal_base.init_text_modal(`${json_item.content}`, `${title}`)
                         })
                     }
                 }
