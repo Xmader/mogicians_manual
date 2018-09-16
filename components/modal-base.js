@@ -12,7 +12,7 @@
 Vue.component('modal-base', {
     template: `
     <div>
-        <div class="modal" tabindex="-1" role="dialog" id="modal">
+        <div v-show="show" class="modal" :class="{ show: show }" :style="{'display': show ? 'block' : 'none', 'padding-right': $_getScrollbarWidth() + 'px' }" tabindex="-1" :aria-hidden="show ? null : true" role="dialog" id="modal" @click="hide()">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -34,9 +34,12 @@ Vue.component('modal-base', {
         </div>
 
         <button v-if="full_screen" type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
+
+        <div class="modal-backdrop show" v-if="show"></div>
     </div>
     `,
     data: () => ({
+        show: false,
         type: 0,
         title: "",
         body: "",
@@ -50,9 +53,32 @@ Vue.component('modal-base', {
             })
         }
     },
+    watch: {
+        show: function ($_show) {
+            var classList = document.body.classList
+            var style = document.body.style
+
+            if ($_show) {
+                style["padding-right"] = this.$_getScrollbarWidth() + "px"
+                classList.add("modal-open")
+            } else {
+                style["padding-right"] = ""
+                classList.remove("modal-open")
+                this.body = " " // 实现关闭对话框自动结束播放视频
+            }
+        },
+    },
     methods: {
+        $_getScrollbarWidth: () => { // 获取滚动条宽度
+            var scrollDiv = document.createElement('div');
+            scrollDiv.className = 'modal-scrollbar-measure';
+            document.body.appendChild(scrollDiv);
+            var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
+            document.body.removeChild(scrollDiv);
+            return scrollbarWidth;
+        },
         get_sub_page_name: () => location.hash.slice(2) || "shuo",
-        hide: () => $('#modal').modal('hide'),
+        hide: function () { this.show = false },
         init_video_img_modal: function (src, title) { // 初始化视频、图片对话框 (type==1)
             return () => Object.assign(this, {
                 type: 1,
