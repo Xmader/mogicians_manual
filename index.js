@@ -9,6 +9,9 @@
  * 
 */
 
+// const $ = require("jquery")
+// const Vue = require("vue")
+
 var offline = !(typeof _offline == "undefined")
 
 var vm = new Vue({
@@ -46,6 +49,3 @@ const init = () => { // 初始化页面
 
 // hash改变时自动重新初始化页面
 window.onhashchange = () => init()
-
-// 实现关闭对话框自动结束播放视频
-$('#modal').on('hidden.bs.modal', () => { vm.$refs.modal_base.body = " " })

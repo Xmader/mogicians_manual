@@ -12,7 +12,7 @@
 Vue.component('modal-base', {
     template: `
     <div>
-        <div v-show="show" class="modal" :class="{ show: show }" :style="{'display': show ? 'block' : 'none', 'padding-right': $_getScrollbarWidth() + 'px' }" tabindex="-1" :aria-hidden="show ? null : true" role="dialog" id="modal" @click="hide()">
+        <div class="modal" :class="{ show: show }" :style="{'display': show ? 'block' : 'none', 'padding-right': $_getScrollbarWidth() + 'px' }" tabindex="-1" :aria-hidden="show ? null : true" role="dialog" id="modal" @click="hide()">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -81,6 +81,7 @@ Vue.component('modal-base', {
         hide: function () { this.show = false },
         init_video_img_modal: function (src, title) { // 初始化视频、图片对话框 (type==1)
             return () => Object.assign(this, {
+                show: true,
                 type: 1,
                 title,
                 body: (this.get_sub_page_name() == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`),
@@ -89,6 +90,7 @@ Vue.component('modal-base', {
         },
         init_text_modal: function (content, title) { // 初始化文字对话框 (type==0)
             return () => Object.assign(this, {
+                show: true,
                 type: 0,
                 title: title,
                 body: "<p>" + content.replace(/\n/g, "</p><p>")
