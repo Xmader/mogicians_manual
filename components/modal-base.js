@@ -23,12 +23,12 @@ Vue.component('modal-base', {
                     </div>
                     <div class="modal-body" :style="modal_body_style" v-if="show" ref="modal_body">
                         <p id="m_body" v-html="body" v-if="type == 0"></p>
-                        <img v-else-if="get_sub_page_name() == 'dou'" :src="src" alt="   图片加载中, 请稍后..." class="modal_media" />
+                        <img v-else-if="is_dou()" :src="src" alt="   图片加载中, 请稍后..." class="modal_media" />
                         <video v-else ref="video" :src="src" class="modal_media" preload="auto" controls></video>
                     </div>
                     <div class="modal-footer">
-                        <button v-if="type == 1 && get_sub_page_name() != 'dou' && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
-                        <a v-if="type == 1" :href="src" target="_blank" class="btn btn-primary download_video" download>下载{{get_sub_page_name() == "dou" ? "图片" : "视频"}}</a>
+                        <button v-if="type == 1 && !is_dou() && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
+                        <a v-if="type == 1" :href="src" target="_blank" class="btn btn-primary download_video" download>下载{{is_dou() ? "图片" : "视频"}}</a>
                         <button type="button" class="btn btn-secondary" @click="hide()">关闭</button>
                     </div>
                 </div>
@@ -80,6 +80,7 @@ Vue.component('modal-base', {
             return scrollbarWidth;
         },
         get_sub_page_name: () => location.hash.slice(2) || "shuo",
+        is_dou: function () { return this.get_sub_page_name() == 'dou' },
         hide: function () { this.show = false },
         init_video_img_modal: function (src, title) { // 初始化视频、图片对话框 (type==1)
             return () => Object.assign(this, {
