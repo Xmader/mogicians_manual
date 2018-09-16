@@ -12,7 +12,7 @@
 Vue.component('modal-base', {
     template: `
     <div>
-        <div class="modal" :class="{ show: show }" :style="{'display': show ? 'block' : 'none', 'padding-right': $_getScrollbarWidth() + 'px' }" tabindex="-1" :aria-hidden="show ? null : true" role="dialog" id="modal">
+        <div class="modal" :class="{ show: show }" :style="{'display': show ? 'block' : 'none', 'padding-right': $_getScrollbarWidth() + 'px' }" tabindex="-1" :aria-hidden="show ? null : true" role="dialog" id="modal" @click.self="hide()">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
