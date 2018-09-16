@@ -23,8 +23,8 @@ Vue.component('modal-base', {
                     </div>
                     <div class="modal-body" :style="modal_body_style" v-if="show">
                         <p id="m_body" v-html="body" v-if="type == 0"></p>
-                        <img v-else-if="get_sub_page_name() == 'dou'" :src="src" alt=" &nbsp;&nbsp;&nbsp;&nbsp;图片加载中, 请稍后..." class="modal_media" />
-                        <video v-else-if="!full_screen" :src="src" class="modal_media" preload="auto" controls></video>
+                        <img v-else-if="get_sub_page_name() == 'dou'" :src="src" alt="   图片加载中, 请稍后..." class="modal_media" />
+                        <video v-else v-show="!full_screen" :muted="full_screen" ref="video" :src="src" class="modal_media" preload="auto" controls></video>
                     </div>
                     <div class="modal-footer">
                         <button v-if="type == 1 && get_sub_page_name() != 'dou' && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
@@ -35,9 +35,9 @@ Vue.component('modal-base', {
             </div>
         </div>
 
-        <template v-if="full_screen">
-            <video :src="src" class="modal_media full_screen_video" preload="auto" controls></video>
-            <button type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
+        <template v-if="get_sub_page_name() == 'videos' && show">
+            <video v-show="full_screen" :src="src" ref="video_full_screen" class="modal_media full_screen_video" preload="auto" controls></video>
+            <button v-if="full_screen" type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
         </template>
         
         <div class="modal-backdrop show" v-if="show"></div>
@@ -72,6 +72,15 @@ Vue.component('modal-base', {
                 classList.remove("modal-open")
             }
         },
+        full_screen: function(full_screen){
+            var refs = this.$refs
+            var v0 = full_screen ? refs.video_full_screen : refs.video
+            var v1 = full_screen ? refs.video : refs.video_full_screen
+                
+            v0.currentTime = v1.currentTime
+            !v1.paused && v0.play()
+            v1.pause()
+        }
     },
     methods: {
         $_getScrollbarWidth: () => { // 获取滚动条宽度
