@@ -11,6 +11,7 @@
 
 Vue.component('modal-base', {
     template: `
+    <div>
         <div class="modal" tabindex="-1" role="dialog" id="modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -31,12 +32,16 @@ Vue.component('modal-base', {
                 </div>
             </div>
         </div>
+
+        <button v-if="full_screen" type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
+    </div>
     `,
     data: () => ({
         type: 0,
         title: "",
         body: "",
-        src: ""
+        src: "",
+        full_screen: false
     }),
     computed: {
         modal_body_style: function () {
@@ -63,14 +68,13 @@ Vue.component('modal-base', {
                 body: "<p>" + content.replace(/\n/g, "</p><p>")
             })
         },
-        full_screen_video: () => { // 网页内全屏视频
+        full_screen_video: function () { // 网页内全屏视频
+            this.full_screen = true
             $("#modal").after($(".modal_media"))
-            $(".modal_media")
-                .addClass("full_screen_video")
-                .after(`<button type="button" class="btn btn-primary" onclick="vm.$refs.modal_base.exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
+            $(".modal_media").addClass("full_screen_video")
         },
-        exit_full_screen_video: () => { // 退出网页内全屏视频
-            $("#exit_full_screen_video").remove()
+        exit_full_screen_video: function () { // 退出网页内全屏视频
+            this.full_screen = false
             $(".modal_media").removeClass("full_screen_video")
             $("#m_body").append($(".modal_media"))
         },
