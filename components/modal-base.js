@@ -84,7 +84,7 @@ Vue.component('modal-base', {
                 show: true,
                 type: 1,
                 title,
-                body: (this.get_sub_page_name() == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`),
+                body: (this.get_sub_page_name() == "dou" ? `<img src="${src}" alt=" &nbsp;&nbsp;&nbsp;&nbsp;图片加载中, 请稍后..." class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`),
                 src
             })
         },
