@@ -24,7 +24,7 @@ Vue.component('card-deck', {
                     </template>
 
                     <template v-else>
-                        <li class="list-group-item grey chang" v-for="item of card.items">
+                        <li class="list-group-item grey chang" v-for="item of card.items" :style="{'padding-bottom': audio_element_height + 23 + 'px'}">
                             <span class="audio_title">{{item.title}}</span>
                             <a v-if="is_Firefox" :href="item.src" target="_blank" class="download_music" download>
                                 <i class="fa fa-download" aria-hidden="true"></i>
@@ -37,20 +37,31 @@ Vue.component('card-deck', {
         </div>
     `,
     inject: ['offline'],
-    data: () => ({
-        is_Firefox: (navigator.userAgent.indexOf("Firefox") > -1),
-        cards: [
-            {
-                header: "加载中, 请稍后...",
-                items: []
-            }
-        ]
-    }),
+    data: function () {
+        return ({
+            is_Firefox: (navigator.userAgent.indexOf("Firefox") > -1),
+            audio_element_height: this.get_audio_element_height(),
+            cards: [
+                {
+                    header: "加载中, 请稍后...",
+                    items: []
+                }
+            ]
+        })
+    },
     computed: {
         audio_class: function () { return `audio${this.is_Firefox ? "_Firefox" : ""}` }
     },
     methods: {
         get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
+        get_audio_element_height: () => {
+            var audio_element = document.createElement('audio');
+            audio_element.controls = true
+            document.body.appendChild(audio_element);
+            var height = document.getElementsByTagName("audio")[0].clientHeight
+            document.body.removeChild(audio_element);
+            return height
+        },
         json_callback: function (data) { // 解析资源文件，显示内容
             var sub_page_name = this.get_sub_page_name()
 
@@ -102,10 +113,6 @@ Vue.component('card-deck', {
                 }
 
                 this.cards.push(card)
-            }
-
-            if (sub_page_name == "chang") {
-                $(".list-group-item.chang").css("padding-bottom", $("audio").height() + 23 + "px")
             }
         }
     }
