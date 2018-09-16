@@ -9,7 +9,6 @@
  * 
 */
 
-// const $ = require("jquery")
 // const Vue = require("vue")
 
 var offline = !(typeof _offline == "undefined")
@@ -44,7 +43,9 @@ const init = () => { // 初始化页面
         json_element.src = `resource/${sub_page_name}.json?callback=json_callback`
         document.getElementsByTagName("body")[0].appendChild(json_element)
     }
-    else { $.get("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + sub_page_name + ".json", json_callback) }
+    else {
+        make_get_request("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + sub_page_name + ".json", json_callback, '获取资源失败!\n')
+    }
 }
 
 // hash改变时自动重新初始化页面
