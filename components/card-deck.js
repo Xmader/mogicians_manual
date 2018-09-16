@@ -17,7 +17,7 @@ Vue.component('card-deck', {
                 <ul class="list-group list-group-flush">
                     <template v-if="get_sub_page_name() != 'chang'">
                         <li class="list-group-item" v-for="item of card.items">
-                            <a data-toggle="modal" :href="'#/'+get_sub_page_name()" data-target="#modal" @click="item.onclick()">
+                            <a href="javascript:;" @click="item.onclick()">
                             {{item.title}}
                             </a>
                         </li>

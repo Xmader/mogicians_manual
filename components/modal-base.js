@@ -17,7 +17,7 @@ Vue.component('modal-base', {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="m_title">{{title}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hide()">
+                        <button type="button" class="close" aria-label="Close" @click="hide()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -27,7 +27,7 @@ Vue.component('modal-base', {
                     <div class="modal-footer">
                         <button v-if="type == 1 && get_sub_page_name() != 'dou' && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
                         <a v-if="type == 1" :href="src" target="_blank" class="btn btn-primary download_video" download>下载{{get_sub_page_name() == "dou" ? "图片" : "视频"}}</a>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hide()">关闭</button>
+                        <button type="button" class="btn btn-secondary" @click="hide()">关闭</button>
                     </div>
                 </div>
             </div>
