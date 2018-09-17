@@ -8,50 +8,14 @@
     <link rel="icon" href="icon.png">
     <link rel="shortcut icon" href="icon.png">
     <title>膜法指南</title>
-    <link href="src/bootstrap-material-design.min.css" rel="stylesheet">
-    <link href="src/font-awesome_4.7.0.css" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-primary top-nav">
-        <span class="navbar-brand">
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i> 膜法指南
-        </span>
-    </nav>
-    <div class="container">
-        <div id="card-deck"></div>
-    </div>
+    <div id="app"></div>
 
-
-    <ul class="nav nav-pills nav-fill bottom-nav"></ul>
-
-    <div class="modal" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="m_title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal').modal('hide')">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="m_body"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modal').modal('hide')">关闭</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="src/jquery.min.js"></script>
     <script src="resource/offline.js"></script>
-    <script src="lib/index.js"></script>
-    <script src="src/popper.min.js"></script>
-    <script src="src/bootstrap-material-design.min.js"></script>
-    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });show_bottom_nav();init();</script>
-    <script src="info.js"></script>
+    <script src="./dist/index.js"></script>
 </body>
 
 </html>

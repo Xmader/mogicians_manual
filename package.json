@@ -1,22 +1,26 @@
 {
-  "name": "mogicians_manual",
-  "description": "膜法指南 网页版",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Xmader/mogicians_manual"
-  },
-  "author": "xmader",
-  "scripts": {
-    "start": "http-server .",
-    "build": "babel index.js -d lib && node -e \"require('fs').appendFileSync('lib/index.js', '\\n/*! 膜法指南 网页版 | Source Code: https://github.com/Xmader/mogicians_manual/blob/master/index.js */');\""
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-preset-minify": "^0.4.3",
-    "http-server": "^0.11.1",
-    "jquery": "^3.3.1"
-  },
-  "license": "MIT"
+    "name": "mogicians_manual",
+    "description": "膜法指南 网页版",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Xmader/mogicians_manual"
+    },
+    "author": "xmader",
+    "scripts": {
+        "start": "http-server .",
+        "build": "parcel build index.js --public-url ./"
+    },
+    "dependencies": {
+        "vue": "^2.5.17"
+    },
+    "devDependencies": {
+        "@vue/component-compiler-utils": "^2.2.0",
+        "babel-helper-vue-jsx-merge-props": "^2.0.0",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-vue-jsx": "^3.7.0",
+        "http-server": "^0.11.1",
+        "parcel-bundler": "^1.9.7",
+        "vue-template-compiler": "^2.5.17"
+    },
+    "license": "MIT"
 }
