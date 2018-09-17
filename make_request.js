@@ -1,5 +1,5 @@
 const make_XHR_request = (url, callback, error_text) => {
-    httpRequest = new XMLHttpRequest();
+    var httpRequest = new XMLHttpRequest();
 
     httpRequest.onreadystatechange = () => {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {

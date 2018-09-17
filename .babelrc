@@ -1,8 +1,5 @@
 {
     "presets": [
-        "env",
-        "minify"
-    ],
-    "plugins": [],
-    "comments": false
+        "env"
+    ]
 }
