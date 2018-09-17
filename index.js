@@ -12,6 +12,7 @@
 import Vue from 'vue/dist/vue.esm'
 import components from './components/components.js'
 import make_get_request from "./make_request.js"
+import "./copyright_info.js"
 
 var offline = !(typeof _offline == "undefined")
 
