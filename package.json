@@ -8,7 +8,7 @@
     "author": "xmader",
     "scripts": {
         "start": "http-server .",
-        "build": "parcel build index.js"
+        "build": "parcel build index.js --public-url ./"
     },
     "dependencies": {
         "vue": "^2.5.17"

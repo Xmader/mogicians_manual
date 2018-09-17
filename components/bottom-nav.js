@@ -12,9 +12,9 @@
 export default {
     template: `
         <ul :class="bottom_nav_classes" id="bottom-nav">
-            <li class="nav-item" v-for="{id,icon,name} of nav_items" :key="id">
-                <a :class="['nav-link',{ active: active_item == id }]" :href="'#/'+id" :id="id" @click="Active(id)">
-                    <i :class="['fa','fa-'+icon]" aria-hidden="true"></i> &nbsp;{{name}}
+            <li class="nav-item" v-for="nav_item of nav_items" :key="nav_item.id">
+                <a :class="['nav-link',{ active: active_item == nav_item.id }]" :href="'#/'+nav_item.id" :id="nav_item.id" @click="Active(nav_item.id)">
+                    <i :class="['fa','fa-'+nav_item.icon]" aria-hidden="true"></i> &nbsp;{{nav_item.name}}
                 </a>
             </li>
         </ul>
