@@ -10,10 +10,10 @@
  * Vue组件
  * 
 */
-import bottom_nav from './bottom-nav.js'
-import card_deck from './card-deck.js'
-import modal_base from './modal-base.js'
-import top_nav from './top-nav.js'
+import bottom_nav from './bottom-nav.vue'
+import card_deck from './card-deck.vue'
+import modal_base from './modal-base.vue'
+import top_nav from './top-nav.vue'
 
 export default ({
     'bottom-nav': bottom_nav,

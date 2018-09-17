@@ -1,3 +1,4 @@
+<!--
 /*!
  * 膜法指南 网页版
  * https://xmader.github.io/mogicians_manual/
@@ -5,37 +6,40 @@
  * Copyright (c) 2018 Xmader
  * Released under the MIT license
  * 
- * card-deck.js
+ * card-deck.vue
  * 
 */
+-->
+<template>
+    <div id="card-deck">
+        <div class="card" v-for="card of cards">
+            <h5 class="card-header">{{card.header}}</h5>
+            <ul class="list-group list-group-flush">
+                <template v-if="get_sub_page_name() != 'chang'">
+                    <li class="list-group-item" v-for="item of card.items">
+                        <a href="javascript:;" @click="item.onclick()">
+                            {{item.title}}
+                        </a>
+                    </li>
+                </template>
+
+                <template v-else>
+                    <li class="list-group-item grey chang" v-for="item of card.items" :style="{'padding-bottom': audio_element_height + 23 + 'px'}">
+                        <span class="audio_title">{{item.title}}</span>
+                        <a v-if="is_Firefox" :href="item.src" target="_blank" class="download_music" download>
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </a>
+                        <audio :class="audio_class" :src="item.src" controls></audio>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+</template>
+
+<script>
 
 export default {
-    template: `
-        <div id="card-deck">
-            <div class="card" v-for="card of cards">
-                <h5 class="card-header">{{card.header}}</h5>
-                <ul class="list-group list-group-flush">
-                    <template v-if="get_sub_page_name() != 'chang'">
-                        <li class="list-group-item" v-for="item of card.items">
-                            <a href="javascript:;" @click="item.onclick()">
-                            {{item.title}}
-                            </a>
-                        </li>
-                    </template>
-
-                    <template v-else>
-                        <li class="list-group-item grey chang" v-for="item of card.items" :style="{'padding-bottom': audio_element_height + 23 + 'px'}">
-                            <span class="audio_title">{{item.title}}</span>
-                            <a v-if="is_Firefox" :href="item.src" target="_blank" class="download_music" download>
-                                <i class="fa fa-download" aria-hidden="true"></i>
-                            </a>
-                            <audio :class="audio_class" :src="item.src" controls></audio>
-                        </li>
-                    </template>
-                </ul>
-            </div>
-        </div>
-    `,
     inject: ['offline'],
     data: function () {
         return ({
@@ -140,3 +144,5 @@ export default {
         }
     }
 }
+
+</script>

@@ -1,3 +1,4 @@
+<!--
 /*!
  * 膜法指南 网页版
  * https://xmader.github.io/mogicians_manual/
@@ -5,14 +6,12 @@
  * Copyright (c) 2018 Xmader
  * Released under the MIT license
  * 
- * modal-base.js - 模态框(对话框)Vue组件
+ * modal-base.vue - 模态框(对话框)Vue组件
  * 
 */
+-->
 
-import "../libs/Object.assign.polyfill.js"
-
-export default {
-    template: `
+<template>
     <div>
         <div class="modal" :class="{ show: show }" :style="{'display': show ? 'block' : 'none', 'padding-right': $_getScrollbarWidth() + 'px' }" tabindex="-1" :aria-hidden="show ? null : true" role="dialog" id="modal" @click.self="hide()">
             <div class="modal-dialog" role="document">
@@ -38,10 +37,15 @@ export default {
         </div>
 
         <button v-if="full_screen" type="button" class="btn btn-primary" @click="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>
-        
+
         <div class="modal-backdrop show" v-if="show"></div>
     </div>
-    `,
+</template>
+
+<script>
+import "../libs/Object.assign.polyfill.js"
+
+export default {
     data: () => ({
         show: false,
         type: 0,
@@ -121,3 +125,5 @@ export default {
 
     }
 }
+
+</script>

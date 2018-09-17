@@ -1,3 +1,4 @@
+<!--
 /*!
  * 膜法指南 网页版
  * https://xmader.github.io/mogicians_manual/
@@ -8,17 +9,22 @@
  * top-nav.js - 顶部导航条Vue组件
  * 
 */
+-->
 
-export default {
-    inject: ['offline'],
-    template: `
+<template>
     <nav class="navbar navbar-dark bg-primary top-nav">
         <span class="navbar-brand">
             <i class="fa fa-graduation-cap" aria-hidden="true"></i> 膜法指南
             <small v-if="offline">(离线版)</small>
         </span>
     </nav>
-    `,
+</template>
+
+
+<script>
+export default {
+    inject: ['offline'],
     data: () => ({}),
     methods: {}
 }
+</script>
