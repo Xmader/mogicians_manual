@@ -33,7 +33,7 @@ var vm = new Vue({
 
                 <modal-base ref="modal_base"></modal-base>
             </main>
-            )
+        )
     },
     provide: function () {
         return {
@@ -42,6 +42,7 @@ var vm = new Vue({
     },
     mounted: function () { this.init() },
     methods: {
+        get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
         json_callback: function (text) {
             sessionStorage && sessionStorage.setItem(this.get_sub_page_name(), text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
             this.$refs.card_deck.json_callback(text)

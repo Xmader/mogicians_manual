@@ -85,8 +85,7 @@ export default {
             document.body.removeChild(scrollDiv);
             return scrollbarWidth;
         },
-        get_sub_page_name: () => location.hash.slice(2) || "shuo",
-        is_dou: function () { return this.get_sub_page_name() == 'dou' },
+        is_dou: function () { return this.$root.get_sub_page_name() == 'dou' },
         hide: function () { this.show = false },
         init_video_img_modal: function (src, title) { // 初始化视频、图片对话框 (type==1)
             return () => Object.assign(this, {

@@ -15,7 +15,7 @@
         <div class="card" v-for="card of cards">
             <h5 class="card-header">{{card.header}}</h5>
             <ul class="list-group list-group-flush">
-                <template v-if="get_sub_page_name() != 'chang'">
+                <template v-if="$root.get_sub_page_name() != 'chang'">
                     <li class="list-group-item" v-for="item of card.items">
                         <a href="javascript:;" @click="item.onclick()">
                             {{item.title}}
@@ -66,9 +66,8 @@ export default {
             document.body.removeChild(audio_element);
             return height
         },
-        get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
         json_callback: function (data) { // 解析资源文件，显示内容
-            var sub_page_name = this.get_sub_page_name()
+            var sub_page_name = this.$root.get_sub_page_name()
 
             // 清空内容
             this.cards = []
