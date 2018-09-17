@@ -32,6 +32,10 @@
                         <audio :class="audio_class" :src="item.src" controls></audio>
                     </li>
                 </template>
+
+                <li class="list-group-item" v-if="card.items.length == 0">
+                    <span>未找到符合条件的结果</span>
+                </li>
             </ul>
         </div>
     </div>
@@ -122,8 +126,17 @@ export default {
             }
 
             this._raw_cards = this.cards
+
+            // 更新搜索结果
+            var refs = this.$root.$refs
+            var name = refs.bottom_nav.nav_items.filter(n => n.id == sub_page_name)[0].name
+            refs.top_nav.sub_page_zh_name = name
         },
         search: function (keyword = "", cards = this._raw_cards) {
+            if (!keyword) {
+                this.cards = this._raw_cards
+                return
+            }
 
             var flat_items = cards
                 .map(card => (card.items))

@@ -29,7 +29,7 @@ var vm = new Vue({
                     <card-deck ref="card_deck"></card-deck>
                 </div>
 
-                <bottom-nav></bottom-nav>
+                <bottom-nav ref="bottom_nav"></bottom-nav>
 
                 <modal-base ref="modal_base"></modal-base>
             </main>
