@@ -5,190 +5,81 @@
  * Copyright (c) 2018 Xmader
  * Released under the MIT license
  * 
- * Source Code: https://github.com/Xmader/mogicians_manual/blob/master/index.js
+ * Source Code: https://github.com/Xmader/mogicians_manual/
  * 
 */
 
-var _offline = !(typeof _offline == "undefined")
-if (_offline) { $(".navbar-brand").append(`<small>(离线版)</small>`) }
+// const Vue = require("vue/dist/vue.js")
+import Vue from 'vue/dist/vue.runtime.esm'
+import components from './components/components.js'
+import make_get_request from "./make_request.js"
+import "./copyright_info.js"
 
-const is_Firefox = navigator.userAgent.indexOf("Firefox") > -1
+var offline = !(typeof _offline == "undefined")
 
-var json, t
+var vm = new Vue({
+    el: '#app',
+    components,
+    render: function (h) {
+        return (
+            <main>
+                <top-nav ref="top_nav"></top-nav>
 
-const full_screen_video = () => { // 网页内全屏视频
-    $("#modal").after($(".modal_media"))
-    $(".modal_media")
-        .addClass("full_screen_video")
-        .after(`<button type="button" class="btn btn-primary" onclick="exit_full_screen_video()" id="exit_full_screen_video">退出网页内全屏</button>`)
-}
+                <div class="container">
+                    <card-deck ref="card_deck"></card-deck>
+                </div>
 
-const exit_full_screen_video = () => { // 退出网页内全屏视频
-    $("#exit_full_screen_video").remove()
-    $(".modal_media").removeClass("full_screen_video")
-    $("#m_body").append($(".modal_media"))
-}
+                <bottom-nav ref="bottom_nav"></bottom-nav>
 
-const init_modal = (i, a) => { // 初始化文字对话框 (type==0)
-    var item = json.contents[i].contents[a]
-    $("#m_title").text(item.title)
-    $("#m_body").html("<p>" + item.content.replace(/\n/g, "</p><p>"))
+                <modal-base ref="modal_base"></modal-base>
+            </main>
+        )
+    },
+    provide: function () {
+        return {
+            offline: offline
+        }
+    },
+    mounted: function () { this.init() },
+    methods: {
+        get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
+        json_callback: function (text) {
+            sessionStorage && sessionStorage.setItem(this.get_sub_page_name(), text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
+            this.$refs.card_deck.json_callback(text)
+        },
+        get_sub_page_name: () => location.hash.slice(2) || "shuo",
+        init: function () { // 初始化页面
+            // 获取当前的子页面名
+            var sub_page_name = this.get_sub_page_name()
+            var json_callback = this.json_callback
 
-    $(".download_video").remove()
-    $("#full_screen_video").remove()
-    $(".modal-body").css("padding", "20px 24px 0px")
-}
-
-const init_video_img_modal = (src, title) => { // 初始化视频、图片对话框 (type==1)
-    $("#m_title").text(title)
-    $("#m_body").html(t == "dou" ? `<img src="${src}" class="modal_media" />` : `<video src="${src}" class="modal_media" preload="auto" controls></video>`)
-
-    $(".download_video").remove()
-    $(".modal-footer").prepend(`<a href="${src}" target="_blank" class="btn btn-primary download_video" download>下载${t == "dou" ? "图片" : "视频"}</a>`)
-
-    $("#full_screen_video").remove()
-    if (t != "dou" && (typeof _cordova == "undefined")) { $(".modal-footer").prepend(`<button type="button" class="btn btn-primary" onclick="full_screen_video()" id="full_screen_video">网页内全屏视频</button>`) }
-
-    $(".modal-body").css("padding", "20px 0px")
-}
-
-const json_callback = (data) => { // 解析资源文件，显示内容
-
-    // 清空内容
-    $("#card-deck").html("")
-
-    // 解析资源文件为json
-    if (typeof data == "string") {
-        var data_split = data.split("\n");
-        data_split.shift();
-        data_split.pop();
-        json = JSON.parse(data_split.join("\n"))
-    }
-    else { json = data }
-
-    // 获取媒体文件的url地址前缀
-    if (json["type"] == 1) {
-        var url = json["url"]
-        if (_offline) { url = url.replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
-    }
-
-    for (var i = 0; i < json.contents.length; i++) {
-        var jc = json.contents[i]
-        var items = jc["contents"]
-
-        var item_html = ""
-
-        for (var a = 0; a < items.length; a++) {
-            var item = items[a]
-            var title = item["title"]
-
-            switch (t) {
-                case "chang": {
-                    item_html += `<li class="list-group-item grey chang">
-                        <span class="audio_title">${title}</span>
-                        <a href="${url}${item["filename"]}" target="_blank" class="download_music" download>
-                            <i class="fa fa-download" aria-hidden="true"></i>
-                        </a>
-                        <audio class="audio${is_Firefox ? "_Firefox" : ""}" src="${url}${item["filename"]}" controls></audio>
-                    </li>`
-                    break;
+            // 清空内容并显示加载中画面
+            this.$refs.card_deck.cards = [
+                {
+                    header: "加载中, 请稍后...",
+                    items: []
                 }
-                default: {
-                    var onclick = (t == "dou" || t == "videos") ? `init_video_img_modal('${url}${item["filename"]}','${title}');` : `init_modal('${i}','${a}');`
-                    item_html += `<li class="list-group-item">
-                        <a data-toggle="modal" href="#/${t}" data-target="#modal" onclick="${onclick}">
-                            ${title}
-                        </a>
-                    </li>`
+            ]
+
+            if (sessionStorage && sessionStorage.getItem(sub_page_name)) { // 从sessionStorage获取资源, 避免多次重复读取资源文件拖慢加载速度
+                var text = sessionStorage.getItem(sub_page_name);
+                this.$refs.card_deck.json_callback(text)
+            }
+            else {
+                // 获取资源文件
+                if (offline) {
+                    // 强行解决Firefox中不能访问本地资源的问题, 不保证长期有效
+                    var json_element = document.createElement("script")
+                    json_element.src = `resource/${sub_page_name}.json?callback=json_callback`
+                    document.getElementsByTagName("body")[0].appendChild(json_element)
+                }
+                else {
+                    make_get_request("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + sub_page_name + ".json", json_callback, '获取资源失败!\n')
                 }
             }
         }
-
-        var html = `
-    <div class="card">
-        <h5 class="card-header">${jc["title"]}</h5>
-        <ul class="list-group list-group-flush">
-            ${item_html}
-        </ul>
-    </div>`;
-
-        $("#card-deck").append(html);
     }
-
-    if (t == "chang") {
-        $(".list-group-item.chang").css("padding-bottom", $("audio").height() + 23 + "px")
-        if (!is_Firefox) {
-            $(".download_music").hide()
-        }
-    }
-}
-
-const show_bottom_nav = (l = [
-    {
-        id: "shuo",
-        name: "说",
-        icon: "microphone"
-    },
-    {
-        id: "xue",
-        name: "学",
-        icon: "book"
-    },
-    {
-        id: "dou",
-        name: "逗",
-        icon: "smile-o"
-    },
-    {
-        id: "chang",
-        name: "唱",
-        icon: "music"
-    },
-    {
-        id: "videos",
-        name: "赏",
-        icon: "film"
-    }
-]
-) => { // 显示底部导航条
-    for (var i = 0; i < l.length; i++) {
-        const { id, name, icon } = l[i] // 不用for...of.., 因为用了后babel后的代码会复杂很多, 还需要引入babel-polyfill
-
-        $(".bottom-nav").append(`
-        <li class="nav-item">
-            <a class="nav-link" href="#/${id}" id="${id}">
-                <i class="fa fa-${icon}" aria-hidden="true"></i> &nbsp;${name}</a>
-        </li>
-        `)
-    }
-}
-
-const init = () => { // 初始化页面
-    // 获取当前的子页面名
-    t = location.hash.slice(2) || "shuo"
-
-    // 底部导航条高亮当前子页面
-    $(".nav-link").removeClass('active')
-    $("#" + t).addClass('active')
-
-    // 清空内容并显示加载中画面
-    $("#card-deck").html(`
-    <div class="card">
-        <h5 class="card-header">加载中, 请稍后...</h5>
-    </div>`)
-
-    // 获取资源文件
-    if (_offline) {
-        // 强行解决Firefox中不能访问本地资源的问题, 不保证长期有效
-        var json_element = document.createElement("script")
-        json_element.src = `resource/${t}.json?callback=json_callback`
-        document.getElementsByTagName("body")[0].appendChild(json_element)
-    }
-    else { $.get("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/resource/" + t + ".json", json_callback) }
-}
-
-// 实现关闭对话框自动结束播放视频
-$('#modal').on('hidden.bs.modal', (e) => $("#m_body").html(" "))
+})
 
 // hash改变时自动重新初始化页面
-window.onhashchange = () => init()
+window.onhashchange = () => vm.init()

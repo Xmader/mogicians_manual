@@ -11,7 +11,7 @@
 
 [下载Android应用程序（在线使用）](https://github.com/Xmader/mogicians_manual/releases/)
 
-> 请使用现代浏览器 (Chrome、Firefox 及 Edge 等) 访问。
+> 不再滋磁IE9及以下版本的IE浏览器, 请使用现代浏览器 (Chrome、Firefox 及 Edge 等) 访问。 (使用IE浏览器播放音视频可能会有问题)
 
 ## 功能
 【说】：语录、采访、访问对话、诗词、论文等作品。
