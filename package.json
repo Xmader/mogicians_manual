@@ -15,6 +15,9 @@
     },
     "devDependencies": {
         "@vue/component-compiler-utils": "^2.2.0",
+        "babel-helper-vue-jsx-merge-props": "^2.0.0",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-vue-jsx": "^3.7.0",
         "http-server": "^0.11.1",
         "parcel-bundler": "^1.9.7",
         "vue-template-compiler": "^2.5.17"
