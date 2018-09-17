@@ -14,8 +14,10 @@
         "vue": "^2.5.17"
     },
     "devDependencies": {
+        "@vue/component-compiler-utils": "^2.2.0",
         "http-server": "^0.11.1",
-        "parcel-bundler": "^1.9.7"
+        "parcel-bundler": "^1.9.7",
+        "vue-template-compiler": "^2.5.17"
     },
     "license": "MIT"
 }
