@@ -20,7 +20,16 @@ var offline = !(typeof _offline == "undefined")
 var vm = new Vue({
     el: '#app',
     components,
-    render: function () { var _vm = this; var _h = _vm.$createElement; var _c = _vm._self._c || _h; return _c('main', [_c('top-nav', { ref: "top_nav" }), _vm._v(" "), _c('div', { staticClass: "container" }, [_c('card-deck', { ref: "card_deck" })], 1), _vm._v(" "), _c('bottom-nav'), _vm._v(" "), _c('modal-base', { ref: "modal_base" })], 1) },
+    render: function () {
+        var createElement = this.$createElement;
+        return createElement('main',
+            [
+                createElement('top-nav', { ref: "top_nav" }),
+                createElement('div', { staticClass: "container" }, [createElement('card-deck', { ref: "card_deck" })], 1),
+                createElement('bottom-nav'),
+                createElement('modal-base', { ref: "modal_base" })
+            ], 1)
+    },
     provide: function () {
         return {
             offline: offline
