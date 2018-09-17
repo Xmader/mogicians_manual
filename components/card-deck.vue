@@ -17,19 +17,20 @@
             <ul class="list-group list-group-flush">
                 <template v-if="$root.get_sub_page_name() != 'chang'">
                     <li class="list-group-item" v-for="item of card.items">
-                        <a href="javascript:;" @click="item.onclick()">
+                        <a v-if="item.onclick" href="javascript:;" @click="item.onclick()">
                             {{item.title}}
                         </a>
+                        <span v-else style="color: #747473;">{{item.title}}</span>
                     </li>
                 </template>
 
                 <template v-else>
                     <li class="list-group-item grey chang" v-for="item of card.items" :style="{'padding-bottom': audio_element_height + 23 + 'px'}">
                         <span class="audio_title">{{item.title}}</span>
-                        <a v-if="is_Firefox" :href="item.src" target="_blank" class="download_music" download>
+                        <a v-if="is_Firefox && item.src" :href="item.src" target="_blank" class="download_music" download>
                             <i class="fa fa-download" aria-hidden="true"></i>
                         </a>
-                        <audio :class="audio_class" :src="item.src" controls></audio>
+                        <audio v-if="item.src" :class="audio_class" :src="item.src" controls></audio>
                     </li>
                 </template>
             </ul>
@@ -143,7 +144,7 @@ export default {
                 .sort((a, b) => a.title.localeCompare(b.title))
                 .filter(str => str.title.includes(keyword))
 
-            new_items = new_items.length == 0 ? [{ title: "未找到符合条件的结果" }] : new_items
+            new_items = new_items.length == 0 ? [{ title: "未找到符合条件的结果", onclick: null, src: null }] : new_items
 
             this.cards = [
                 {

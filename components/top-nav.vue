@@ -20,7 +20,7 @@
 
         <div class="search form-inline">
             <i class="fa fa-search" aria-hidden="true" @click="search_toggle()"></i>
-            <input v-if="search_open" @keypress.esc="search_open = false" v-model.trim="search_keyword" type="text" class="form-control" :placeholder="'搜索 \''+ sub_page_zh_name +'\''">
+            <input v-if="search_open" @keypress.esc="search_open = false; search_keyword = ''" v-model.trim="search_keyword" type="text" class="form-control" :placeholder="'搜索 \''+ sub_page_zh_name +'\''">
         </div>
     </nav>
 </template>
@@ -53,6 +53,7 @@ export default {
         search_toggle: function () {
             this.search_open = !this.search_open
             this.sub_page_zh_name = this.get_sub_page_zh_name()
+            this.search_keyword = ""
         }
     }
 }
