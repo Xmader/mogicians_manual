@@ -32,16 +32,13 @@
                         <audio :class="audio_class" :src="item.src" controls></audio>
                     </li>
                 </template>
-
-                <li class="list-group-item" v-if="card.items.length == 0">
-                    <span>未找到符合条件的结果</span>
-                </li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
+import "../libs/String.prototype.includes.polyfill.js"
 
 export default {
     inject: ['offline'],
@@ -145,6 +142,8 @@ export default {
             var new_items = flat_items
                 .sort((a, b) => a.title.localeCompare(b.title))
                 .filter(str => str.title.includes(keyword))
+
+            new_items = new_items.length == 0 ? [{ title: "未找到符合条件的结果" }] : new_items
 
             this.cards = [
                 {

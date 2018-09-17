@@ -64,14 +64,17 @@ export default {
     watch: {
         show: function ($_show) {
             var classList = document.body.classList
-            var body_style = document.body.style
-            var bottom_nav_style = document.getElementById("bottom-nav").style
+            var elements = [
+                document.body,
+                document.getElementById("bottom-nav"),
+                document.getElementsByClassName("search")[0]
+            ]
 
             if ($_show) {
-                body_style["padding-right"] = bottom_nav_style["padding-right"] = this.$_getScrollbarWidth() + "px"
+                elements.forEach((e) => { e.style["padding-right"] = this.$_getScrollbarWidth() + "px" })
                 classList.add("modal-open")
             } else {
-                body_style["padding-right"] = bottom_nav_style["padding-right"] = ""
+                elements.forEach((e) => { e.style["padding-right"] = "" })
                 classList.remove("modal-open")
             }
         }
