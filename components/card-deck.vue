@@ -25,7 +25,7 @@
                 </template>
 
                 <template v-else>
-                    <li class="list-group-item grey chang" v-for="item of card.items" :style="{'padding-bottom': audio_element_height + 23 + 'px'}">
+                    <li class="list-group-item grey chang" v-for="item of card.items" :style="{'padding-bottom': item.src ? (audio_element_height + 23 + 'px') : null}">
                         <span class="audio_title">{{item.title}}</span>
                         <a v-if="is_Firefox && item.src" :href="item.src" target="_blank" class="download_music" download>
                             <i class="fa fa-download" aria-hidden="true"></i>
