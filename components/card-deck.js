@@ -41,7 +41,7 @@ export default {
         return ({
             is_Firefox: (navigator.userAgent.indexOf("Firefox") > -1),
             audio_element_height: this.$_get_audio_element_height(),
-            _raw_cards:[],
+            _raw_cards: [],
             cards: [
                 {
                     header: "加载中, 请稍后...",
@@ -86,11 +86,13 @@ export default {
                 if (this.offline) { url = url.replace("https://raw.githubusercontent.com/Xmader/mogicians_manual/offline/", "") }
             }
 
-            for (var jc of json.contents) {
+            for (var i = 0; i < json.contents.length; i++) { // 如果用for...of..., 在IE中需要导入babel-polyfill
+                var jc = json.contents[i]
                 var json_items = jc["contents"]
                 var items = []
 
-                for (var json_item of json_items) {
+                for (var a = 0; a < json_items.length; a++) { // 如果用for...of..., 在IE中需要导入babel-polyfill
+                    var json_item = json_items[a]
                     var title = json_item["title"]
 
                     if (sub_page_name == "chang") {
@@ -118,7 +120,7 @@ export default {
 
             this._raw_cards = this.cards
         },
-        search: function (keyword = "", cards = this._raw_cards) { 
+        search: function (keyword = "", cards = this._raw_cards) {
 
             var flat_items = cards
                 .map(card => (card.items))
