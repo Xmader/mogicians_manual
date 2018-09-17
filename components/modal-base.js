@@ -9,6 +9,8 @@
  * 
 */
 
+import "../libs/Object.assign.polyfill.js"
+
 export default {
     template: `
     <div>
