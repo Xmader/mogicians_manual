@@ -7,7 +7,7 @@
 
 谈笑风生，一派胡言，祝你身体健康。
 
-**[进入 膜法指南 网页版](https://xmader.github.io/mogicians_manual/)**
+**[进入 膜法指南 网页版](https://mogicians-manual.github.io/)**
 
 [下载Android应用程序（在线使用）](https://github.com/Xmader/mogicians_manual/releases/)
 

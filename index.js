@@ -1,6 +1,6 @@
 /*!
  * 膜法指南 网页版
- * https://xmader.github.io/mogicians_manual/
+ * https://mogicians-manual.github.io/
  * 
  * Copyright (c) 2018 Xmader
  * Released under the MIT license
@@ -80,6 +80,9 @@ var vm = new Vue({
         }
     }
 })
+
+// 暴露出json_callback函数
+window.json_callback = vm.json_callback
 
 // hash改变时自动重新初始化页面
 window.onhashchange = () => vm.init()
