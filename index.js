@@ -16,6 +16,8 @@ import make_get_request from "./make_request.js"
 import "./copyright_info.js"
 
 var offline = !(typeof _offline == "undefined")
+document.querySelector("script#offline").remove()
+// console.clear()
 
 var vm = new Vue({
     el: '#app',
@@ -47,8 +49,8 @@ var vm = new Vue({
             if (typeof text != "string") {
                 text = JSON.stringify(text)
             }
-            else if (text.trim().startsWith("json_callback(")) { 
-                text = text.trim().replace("json_callback(","").slice(0,-1)
+            else if (text.trim().startsWith("json_callback(")) {
+                text = text.trim().replace("json_callback(", "").slice(0, -1)
             }
 
             sessionStorage && sessionStorage.setItem(this.get_sub_page_name(), text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
@@ -76,8 +78,9 @@ var vm = new Vue({
                 // 获取资源文件
                 if (offline) {
                     // 强行解决Firefox中不能访问本地资源的问题, 不保证长期有效
-                    var json_element = document.createElement("script")
+                    const json_element = document.createElement("script")
                     json_element.src = `resource/${sub_page_name}.json?callback=json_callback`
+                    json_element.onload = (e) => e.target.remove()
                     document.getElementsByTagName("body")[0].appendChild(json_element)
                 }
                 else {
