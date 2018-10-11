@@ -104,6 +104,10 @@ json_callback(
             "title": "原生",
             "contents": [
                 {
+                    "title": "吼啊",
+                    "filename": "dou_original_0_0_hou_a.gif"
+                },
+                {
                     "title": "没任何意思",
                     "filename": "dou_original_0_0_mei_ren_he_yi_si.jpg"
                 },
@@ -126,6 +130,10 @@ json_callback(
                 {
                     "title": "你们naïve",
                     "filename": "dou_original_0_14_ni_men_naive.jpg"
+                },
+                {
+                    "title": "你也有责任",
+                    "filename": "dou_original_0_15_ni_ye_you_ze_ren.gif"
                 },
                 {
                     "title": "按照基本法",
@@ -241,6 +249,10 @@ json_callback(
                     "filename": "dou_kaogei_0_laugh.gif"
                 },
                 {
+                    "title": "仰天笑",
+                    "filename": "dou_kaogei_0_laugh_large.gif"
+                },
+                {
                     "title": "大拇指",
                     "filename": "dou_kaogei_1_gao.jpg"
                 },
@@ -257,12 +269,20 @@ json_callback(
                     "filename": "dou_kaogei_4_gu_zhang_1.gif"
                 },
                 {
+                    "title": "鼓掌γ",
+                    "filename": "dou_kaogei_4_gu_zhang_2.gif"
+                },
+                {
                     "title": "打哈欠",
                     "filename": "dou_kaogei_5_da_ha_qian.jpg"
                 },
                 {
                     "title": "嫌弃",
                     "filename": "dou_kaogei_6_xian_qi.gif"
+                },
+                {
+                    "title": "ワトラ模板",
+                    "filename": "dou_kaogei_99_watora_expression.jpg"
                 }
             ]
         },
@@ -280,6 +300,26 @@ json_callback(
                 {
                     "title": "蜜汁续命",
                     "filename": "dou_chengyu_11_mi_zhi_xu_ming.jpg"
+                },
+                {
+                    "title": "民民拜拜",
+                    "filename": "dou_chengyu_12_min_min_bai_bai.jpg"
+                },
+                {
+                    "title": "会心一笑",
+                    "filename": "dou_chengyu_13_hui_xin_yi_xiao.png"
+                },
+                {
+                    "title": "蛤蛤大笑",
+                    "filename": "dou_chengyu_14_ha_ha_da_xiao.jpg"
+                },
+                {
+                    "title": "民枪警告",
+                    "filename": "dou_chengyu_15_min_qiang_jing_gao.jpg"
+                },
+                {
+                    "title": "无可奉告",
+                    "filename": "dou_chengyu_16_wu_ke_feng_gao.gif"
                 },
                 {
                     "title": "莱士汹汹",
@@ -341,6 +381,22 @@ json_callback(
                 {
                     "title": "喝茶γ",
                     "filename": "dou_kitiku_4_drink_tea_2.gif"
+                },
+                {
+                    "title": "乒乓",
+                    "filename": "dou_kitiku_5_ping_pong.gif"
+                },
+                {
+                    "title": "摇头",
+                    "filename": "dou_kitiku_6_shake_head.gif"
+                },
+                {
+                    "title": "捶手",
+                    "filename": "dou_kitiku_7_chui_shou.gif"
+                },
+                {
+                    "title": "氢弹",
+                    "filename": "dou_kitiku_8_hydro_bomb.gif"
                 }
             ]
         },
@@ -348,12 +404,48 @@ json_callback(
             "title": "恶搞",
             "contents": [
                 {
-                    "title": "内心毫无波动",
-                    "filename": "dou_kuso_0_nei_xin_hao_wu_bo_dong.jpg"
+                    "title": "但是我见得太多",
+                    "filename": "dou_kuso_0_dan_shi_wo_jian_de_tai_duo.png"
+                },
+                {
+                    "title": "膜法三连",
+                    "filename": "dou_kuso_0_mogic_san_lian.gif"
+                },
+                {
+                    "title": "蛤三篇 · 其一",
+                    "filename": "dou_kuso_100_ha_san_pian_1.jpg"
+                },
+                {
+                    "title": "蛤三篇 · 其二",
+                    "filename": "dou_kuso_100_ha_san_pian_2.jpg"
+                },
+                {
+                    "title": "蛤三篇 · 其三",
+                    "filename": "dou_kuso_100_ha_san_pian_3.jpg"
+                },
+                {
+                    "title": "来啊渣渣",
+                    "filename": "dou_kuso_10_lai_a_zha_zha.jpg"
+                },
+                {
+                    "title": "小龙女",
+                    "filename": "dou_kuso_11_xiao_long_nv.jpg"
+                },
+                {
+                    "title": "因缺思挺",
+                    "filename": "dou_kuso_12_interesting.jpg"
+                },
+                {
+                    "title": "+1 sec",
+                    "filename": "dou_kuso_13_jia_yi_miao.gif"
+                },
+                {
+                    "title": "大♂新♂闻",
+                    "filename": "dou_kuso_14_da_xin_wen.jpg"
                 },
                 {
                     "title": "这就是蛤丝",
-                    "filename": "dou_kuso_10_zhe_jiu_shi_ha_si.jpg"
+                    "filename": "dou_kuso_15_zhe_jiu_shi_ha_si.jpg"
                 },
                 {
                     "title": "蛤丝通用战术手势",
@@ -361,19 +453,75 @@ json_callback(
                 },
                 {
                     "title": "炸鱼",
-                    "filename": "dou_kuso_11_zha_yu.jpg"
+                    "filename": "dou_kuso_16_zha_yu.jpg"
                 },
                 {
                     "title": "LZSB",
-                    "filename": "dou_kuso_12_lou_zhu_sha_bi.jpg"
+                    "filename": "dou_kuso_17_lou_zhu_sha_bi.jpg"
                 },
                 {
                     "title": "长者红包",
-                    "filename": "dou_kuso_13_hong_bao.jpg"
+                    "filename": "dou_kuso_18_hong_bao.jpg"
+                },
+                {
+                    "title": "又毒又辣",
+                    "filename": "dou_kuso_19_you_du_you_la.jpeg"
+                },
+                {
+                    "title": "我是身经百战",
+                    "filename": "dou_kuso_1_wo_shi_shen_jing_bai_zhan.png"
+                },
+                {
+                    "title": "念他的诗",
+                    "filename": "dou_kuso_20_nian_ta_de_shi.png"
+                },
+                {
+                    "title": "坠吼的",
+                    "filename": "dou_kuso_22_zhui_hou_de.gif"
+                },
+                {
+                    "title": "你的名字",
+                    "filename": "dou_kuso_23_ni_de_ming_zi.jpg"
+                },
+                {
+                    "title": "让我看看",
+                    "filename": "dou_kuso_2_rang_wo_kan_kan.jpg"
+                },
+                {
+                    "title": "你也要改变中国",
+                    "filename": "dou_kuso_3_ni_ye_yao.jpg"
+                },
+                {
+                    "title": "内心毫无波动",
+                    "filename": "dou_kuso_4_nei_xin_hao_wu_bo_dong.jpg"
+                },
+                {
+                    "title": "金山打字通",
+                    "filename": "dou_kuso_50_jin_shan_da_zi_tong.jpg"
+                },
+                {
+                    "title": "旅行青蛙",
+                    "filename": "dou_kuso_51_lv_xing_qing_wa.jpg"
+                },
+                {
+                    "title": "MOGIC",
+                    "filename": "dou_kuso_52_mogic.jpg"
+                },
+                {
+                    "title": "滚",
+                    "filename": "dou_kuso_5_gun.gif"
+                },
+                {
+                    "title": "没有",
+                    "filename": "dou_kuso_6_mei_you.gif"
+                },
+                {
+                    "title": "不要污",
+                    "filename": "dou_kuso_7_bu_yao_wu.gif"
                 },
                 {
                     "title": "都是垃圾",
-                    "filename": "dou_kuso_1_dou_shi_la_ji.jpg"
+                    "filename": "dou_kuso_7_dou_shi_la_ji.jpg"
                 },
                 {
                     "title": "吔屎啦",
@@ -381,31 +529,19 @@ json_callback(
                 },
                 {
                     "title": "我吼兴奋呀",
-                    "filename": "dou_kuso_3_wo_hao_xing_fen_a.jpg"
+                    "filename": "dou_kuso_8_wo_hao_xing_fen_a.jpg"
+                },
+                {
+                    "title": "I WANT YOU",
+                    "filename": "dou_kuso_98_i_want_you.jpg"
+                },
+                {
+                    "title": "iPhone壁纸",
+                    "filename": "dou_kuso_99_iphone_wallpaper.jpg"
                 },
                 {
                     "title": "都给我严肃一点",
-                    "filename": "dou_kuso_4_dou_gei_wo_yan_su_dian.jpg"
-                },
-                {
-                    "title": "来啊渣渣",
-                    "filename": "dou_kuso_5_lai_a_zha_zha.jpg"
-                },
-                {
-                    "title": "小龙女",
-                    "filename": "dou_kuso_6_xiao_long_nv.jpg"
-                },
-                {
-                    "title": "因缺思挺",
-                    "filename": "dou_kuso_7_interesting.jpg"
-                },
-                {
-                    "title": "+1 sec",
-                    "filename": "dou_kuso_8_jia_yi_miao.gif"
-                },
-                {
-                    "title": "大♂新♂闻",
-                    "filename": "dou_kuso_9_da_xin_wen.jpg"
+                    "filename": "dou_kuso_9_dou_gei_wo_yan_su_dian.jpg"
                 }
             ]
         },
@@ -433,8 +569,16 @@ json_callback(
                     "filename": "dou_baozou_13_hou_ni_ma_bi.jpg"
                 },
                 {
-                    "title": "一派胡言",
-                    "filename": "dou_baozou_14_yi_pai_hu_yan.jpg"
+                    "title": "有时间么",
+                    "filename": "dou_baozou_14_you_shi_jian_me.jpg"
+                },
+                {
+                    "title": "三个代表",
+                    "filename": "dou_baozou_15_san_ge_dai_biao.jpg"
+                },
+                {
+                    "title": "呸",
+                    "filename": "dou_baozou_16_pei.jpg"
                 },
                 {
                     "title": "我要和他谈笑风生",
@@ -451,6 +595,10 @@ json_callback(
                 {
                     "title": "中央办公厅",
                     "filename": "dou_baozou_4_zhong_yang_ban_gong_ting.jpg"
+                },
+                {
+                    "title": "一派胡言",
+                    "filename": "dou_baozou_50_yi_pai_hu_yan.jpg"
                 },
                 {
                     "title": "是在下图样",
