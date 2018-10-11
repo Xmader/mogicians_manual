@@ -44,6 +44,13 @@ var vm = new Vue({
     methods: {
         get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
         json_callback: function (text) {
+            if (typeof text != "string") {
+                text = JSON.stringify(text)
+            }
+            else if (text.trim().startsWith("json_callback(")) { 
+                text = text.trim().replace("json_callback(","").slice(0,-1)
+            }
+
             sessionStorage && sessionStorage.setItem(this.get_sub_page_name(), text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
             this.$refs.card_deck.json_callback(text)
         },

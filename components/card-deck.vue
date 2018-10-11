@@ -73,17 +73,9 @@ export default {
 
             // 清空内容
             this.cards = []
-            // this.cards.pop()
 
-            var json
             // 解析资源文件为json
-            if (typeof data == "string") {
-                var data_split = data.split("\n");
-                data_split.shift();
-                data_split.pop();
-                json = JSON.parse(data_split.join("\n"))
-            }
-            else { json = data }
+            var json = JSON.parse(data)
 
             // 获取媒体文件的url地址前缀
             if (json["type"] == 1) {
