@@ -119,14 +119,13 @@ body {
     audio {
         position: absolute;
         right: 0px;
+        top: 3px;
     }
     .audio_Firefox {
         margin-right: 62px;
     }
     .audio {
         margin-right: 32px;
-        margin-bottom: 8px;
-        bottom: 0px;
     }
     .list-group-item.chang {
         padding-bottom: 3px !important
