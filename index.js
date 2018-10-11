@@ -13,11 +13,13 @@
 import Vue from 'vue/dist/vue.runtime.esm'
 import components from './components/components.js'
 import make_get_request from "./make_request.js"
-import "./copyright_info.js"
+import copyright_info from"./copyright_info.js"
 
-var offline = !(typeof _offline == "undefined")
+const offline = !(typeof _offline == "undefined")
 document.querySelector("script#offline").remove()
 // console.clear()
+
+console.info(copyright_info)
 
 var vm = new Vue({
     el: '#app',
