@@ -52,10 +52,10 @@ const callback = (err, result) => {
             x => x.filename && x.filename.startsWith(c.filename + "_")
         )
 
-        c.contents = filtered
-
-        delete c.filename
-        return c;
+        return {
+            title: c.title,
+            contents: filtered
+        }
     })
 
     const output = {
