@@ -1,1 +1,1 @@
-var _offline = true
+window._offline = true
