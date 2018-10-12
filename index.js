@@ -49,7 +49,7 @@ const vm = new Vue({
             if (typeof text != "string") {
                 text = JSON.stringify(text)
             }
-            else if (text.trim().startsWith("json_callback(")) {
+            else if (text.trim().indexOf("json_callback(") == 0) {
                 text = text.trim().replace("json_callback(", "").slice(0, -1)
             }
 
