@@ -13,15 +13,13 @@
 import Vue from 'vue/dist/vue.runtime.esm'
 import components from './components/components.js'
 import make_get_request from "./make_request.js"
-import copyright_info from"./copyright_info.js"
 
-const offline = !(typeof _offline == "undefined")
-document.querySelector("script#offline").remove()
-// console.clear()
-
+import copyright_info from "./copyright_info.js"
 console.info(copyright_info)
 
-var vm = new Vue({
+const offline = !(typeof window._offline == "undefined")
+
+const vm = new Vue({
     el: '#app',
     components,
     render: function (h) {
@@ -83,6 +81,7 @@ var vm = new Vue({
                     const json_element = document.createElement("script")
                     json_element.src = `resource/${sub_page_name}.json?callback=json_callback`
                     json_element.onload = (e) => e.target.remove()
+                    json_element.onerror = (e) => { e.target.remove(); console.error('获取资源文件失败!') }
                     document.getElementsByTagName("body")[0].appendChild(json_element)
                 }
                 else {
