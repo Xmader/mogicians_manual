@@ -28,7 +28,7 @@
                         <video v-else ref="video" :src="src" class="modal_media" preload="auto" controls></video>
                     </div>
                     <div class="modal-footer">
-                        <button v-if="type == 1 && !is_dou() && (typeof _cordova == 'undefined')" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
+                        <button v-if="type == 1 && !is_dou() && !$_using_cordova()" type="button" class="btn btn-primary" @click="full_screen_video()" id="full_screen_video">网页内全屏视频</button>
                         <a v-if="type == 1" :href="src" target="_blank" class="btn btn-primary download_video" download>下载{{is_dou() ? "图片" : "视频"}}</a>
                         <button type="button" class="btn btn-secondary" @click="hide()">关闭</button>
                     </div>
@@ -80,6 +80,9 @@ export default {
         }
     },
     methods: {
+        $_using_cordova() {
+            return !!window._cordova
+        },
         $_getScrollbarWidth: () => { // 获取滚动条宽度
             var scrollDiv = document.createElement('div');
             scrollDiv.className = 'modal-scrollbar-measure';
