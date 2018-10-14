@@ -58,8 +58,7 @@ const vm = new Vue({
                 sessionStorage && sessionStorage.setItem(sub_page_name, text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
 
                 if (this.get_sub_page_name() != sub_page_name) {
-                    location.hash = "#/" + sub_page_name
-                    this.$refs.bottom_nav.Active(sub_page_name)
+                    return;
                 }
             }
 
