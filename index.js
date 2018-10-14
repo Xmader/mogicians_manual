@@ -53,11 +53,13 @@ const vm = new Vue({
                 text = text.trim().replace("json_callback(", "").slice(0, -1)
             }
 
-            const sub_page_name = url.match(/(\w+)\.json/)[1];
-            if (url) sessionStorage && sessionStorage.setItem(sub_page_name, text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
-            if (this.get_sub_page_name() != sub_page_name) {
-                location.hash = "#/" + sub_page_name
-                this.$refs.bottom_nav.Active(sub_page_name)
+            if (url) {
+                const sub_page_name = url.match(/(\w+)\.json/)[1];
+                sessionStorage && sessionStorage.setItem(sub_page_name, text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
+
+                if (this.get_sub_page_name() != sub_page_name) {
+                    return;
+                }
             }
 
             this.$refs.card_deck.json_callback(text)
