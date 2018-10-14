@@ -45,18 +45,23 @@ const vm = new Vue({
     mounted: function () { this.init() },
     methods: {
         get_sub_page_name: () => location.hash.slice(2) || "shuo", // 获取当前的子页面名
-        json_callback: function (text) {
+        json_callback: function (text, url) {
             if (typeof text != "string") {
                 text = JSON.stringify(text)
             }
-            else if (text.trim().startsWith("json_callback(")) {
+            else if (text.trim().indexOf("json_callback(") == 0) {
                 text = text.trim().replace("json_callback(", "").slice(0, -1)
             }
 
-            sessionStorage && sessionStorage.setItem(this.get_sub_page_name(), text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
+            const sub_page_name = url.match(/(\w+)\.json/)[1];
+            if (url) sessionStorage && sessionStorage.setItem(sub_page_name, text); // 保存获取的资源到sessionStorage, 加快下一次访问此子页面的加载速度, 优化性能
+            if (this.get_sub_page_name() != sub_page_name) {
+                location.hash = "#/" + sub_page_name
+                this.$refs.bottom_nav.Active(sub_page_name)
+            }
+
             this.$refs.card_deck.json_callback(text)
         },
-        get_sub_page_name: () => location.hash.slice(2) || "shuo",
         init: function () { // 初始化页面
             // 获取当前的子页面名
             var sub_page_name = this.get_sub_page_name()

@@ -7,9 +7,10 @@
     },
     "author": "xmader",
     "scripts": {
-        "start": "http-server .",
+        "start": "http-server . -p 8082 -c-1",
         "build": "parcel build index.js --public-url ./",
-        "build:offline": "parcel build offline.entry.js --public-url ./ --out-file index.js"
+        "build:offline": "parcel build offline.entry.js --public-url ./ --out-file index.js",
+        "release:offline": "git checkout offline && git merge master && npm run build:offline"
     },
     "dependencies": {
         "vue": "^2.5.17"
