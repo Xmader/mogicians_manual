@@ -4,7 +4,7 @@ const make_XHR_request = (url, callback, error_text) => {
     httpRequest.onreadystatechange = () => {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
-                callback(httpRequest.responseText);
+                callback(httpRequest.responseText, httpRequest.responseURL);
             } else {
                 console.error(error_text, httpRequest)
             }
@@ -21,7 +21,7 @@ const make_fetch_request = (url, callback, error_text) => {
             if (!response.ok) throw response;
             return response.text()
         })
-        .then((text) => callback(text))
+        .then((text) => callback(text, url))
         .catch((error_response) => console.error(error_text, error_response))
 }
 
