@@ -103,4 +103,8 @@ const vm = new Vue({
 window.json_callback = vm.json_callback
 
 // hash改变时自动重新初始化页面
-window.onhashchange = () => vm.init()
+window.onhashchange = () => {
+    vm.init()
+    vm.$refs.modal_base.hide()
+    vm.$refs.bottom_nav.Active(location.hash.slice(2) || "shuo")
+}
