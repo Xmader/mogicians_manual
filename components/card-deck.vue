@@ -121,8 +121,12 @@ export default {
             var refs = this.$root.$refs
             var name = refs.bottom_nav.nav_items.filter(n => n.id == sub_page_name)[0].name
             refs.top_nav.sub_page_zh_name = name
+
+            window.scrollTo(0, 0) // 页面滚动到顶部
         },
         search: function (keyword = "", cards = this._raw_cards) {
+            window.scrollTo(0, 0) // 页面滚动到顶部
+
             if (!keyword) {
                 this.cards = this._raw_cards
                 return
